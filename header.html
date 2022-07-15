@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>백종원 골목식당</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+      }
+      .search img {
+        position: absolute;
+        width: 17px;
+        top: 10px;
+        right: 90px;
+      }
+      input {
+        width: 100%;
+        border-radius: 15px;
+        padding: 10px 12px;
+        padding-left: 55px;
+        font-size: 14px;
+        font-weight: 600;
+        color: gray;
+        border: 1px solid #f6f6f6;
+        background-color: #f6f6f6;
+      }
+      .background {
+        width: 100%;
+      }
+      .header {
+        position: fixed;
+        width: 100%;
+        height: 80px;
+        padding-top: 20px;
+        background-color: #ededed;
+        z-index: 1;
+      }
+      .home {
+        padding-left: 10%;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+      .in-header {
+        width: 100%;
+        display: flex;
+      }
+      .search {
+        position: relative;
+        width: 500px !important;
+        margin-left: auto;
+        padding-right: 80px;
+      }
+      .search-title {
+        position: absolute;
+        width: 50px;
+        font-size: 14px;
+        font-weight: 800;
+        top: 9px;
+        left: 6px;
+      }
+      .login {
+        padding-right: 5%;
+        padding-top: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .regi {
+        padding-right: 10%;
+        padding-top: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .slides img {
+        margin: 0;
+        width: 100%;
+      }
+      .bt {
+        cursor: pointer;
+      }
+      .scroll {
+        padding-top: 100px;
+        margin-bottom: 200px;
+      }
+      .scroll1 {
+        font-weight: bold;
+      }
+      .zoom {
+        font-weight: 900;
+        font-size: 30px;
+        color: #b70000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background">
+      <div class="header">
+        <div class="in-header">
+          <div class="home"><a href="header.html">백's 골목지도</a></div>
+          <div class="search">
+            <input type="text" placeholder="가게 이름을 검색해보세요" />
+            <img
+              class="bt"
+              src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+            />
+            <div class="search-title">검색</div>
+          </div>
+          <div class="login">로그인</div>
+          <div class="regi">회원가입</div>
+        </div>
+      </div>
+    </div>
+    <!-- 배경 사진 -->
+    <div class="container">
+      <div class="text">
+        <div class="highlight">
+          <div class="name">
+            <span>조보아</span>
+            <span>씨</span>
+          </div>
+          <p>이것 좀 먹어봐유!</p>
+        </div>
+        <div class="descript">
+          <p style="text-align: left">
+            무언가 글자를 넣어서 설명을 하면 더 좋을 것 같습니다. 어떤 말을
+            넣어야할지 고민이라 주저리주저리 하는 중입니다. 무슨 말을 넣을까요
+          </p>
+        </div>
+      </div>
+      <div id="img_container" style="padding-top: 80px">
+        <div class="slide_wrap">
+          <div class="slide_box">
+            <div class="slide_list clearfix">
+              <div class="slide_content slide01">
+                <p>1</p>
+              </div>
+              <div class="slide_content slide02">
+                <p>2</p>
+              </div>
+              <div class="slide_content slide03">
+                <p>3</p>
+              </div>
+              <div class="slide_content slide04">
+                <p>4</p>
+              </div>
+              <div class="slide_content slide05">
+                <p>5</p>
+              </div>
+            </div>
+            <!-- // .slide_list -->
+          </div>
+          <!-- // .slide_box -->
+        </div>
+        <!-- // .slide_wrap -->
+      </div>
+    </div>
+    <!-- // .container -->
+    <div class="slide_controller">
+      <div class="slide_btn_box">
+        <button type="button" class="slide_btn_prev">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button type="button" class="slide_btn_next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+      <!-- // .slide_btn_box -->
+      <ul class="slide_pagination"></ul>
+      <!-- // .slide_pagination -->
+    </div>
+    <script src="./slideShow.js"></script>
+
+    <div class="scroll">
+      <div class="scroll1">내 근처 골목 식당이 궁금하다면?</div>
+      <div class="scroll2">스크롤 해보세요!</div>
+      <div class="zoom">&darr;</div>
+    </div>
+    <div class="all-map" style="display: flex; width: 100%; height: 600px">
+      <div id="map" style="width: 800px; height: 500px; margin-left: 20%"></div>
+      <div id="result" style="padding: 3%">
+        <div class="kewrod">
+          <div
+            id="kewrod-result"
+            style="
+              font-size: 13px;
+              color: gray;
+              font-weight: bold;
+              text-align: left;
+            "
+          >
+            키워드로 찾기
+          </div>
+          <div
+            class="eating"
+            style="
+              display: flex;
+              padding-top: 5%;
+              text-align: left;
+              border-color: #b70000;
+            "
+          >
+            <button
+              id="hot"
+              style="
+                width: 50px;
+                margin-right: 4%;
+                border-radius: 10px;
+                background-color: white;
+                color: #b70000;
+                border-color: gray;
+              "
+            >
+              매콤
+            </button>
+            <button
+              id="daldal"
+              style="
+                width: 50px;
+                margin-right: 4%;
+                border-radius: 10px;
+                background-color: white;
+                color: #b70000;
+                border-color: gray;
+              "
+            >
+              달달
+            </button>
+            <button
+              id="nuki"
+              style="
+                width: 50px;
+                margin-right: 4%;
+                border-radius: 10px;
+                background-color: white;
+                color: #b70000;
+                border-color: gray;
+              "
+            >
+              느끼
+            </button>
+            <button
+              id="solo"
+              style="
+                width: 50px;
+                border-radius: 10px;
+                color: #b70000;
+                background-color: white;
+                border-color: gray;
+              "
+            >
+              혼밥
+            </button>
+          </div>
+        </div>
+        <div class="location">
+          <div
+            id="location-result"
+            style="
+              padding-top: 15%;
+              font-size: 13px;
+              color: gray;
+              font-weight: bold;
+              text-align: left;
+            "
+          >
+            위치로 찾기
+          </div>
+          <div
+            class="loc"
+            style="
+              width: 220px;
+              display: flex;
+              padding-top: 5%;
+              text-align: left;
+              border-color: #b70000;
+            "
+          >
+            <button
+              id="seoul"
+              style="
+                width: 50px;
+                margin-right: 10px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              서울
+            </button>
+            <button
+              id="keung"
+              style="
+                width: 65px;
+                margin-right: 10px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              경기도
+            </button>
+            <button
+              id="incheon"
+              style="
+                width: 50px;
+                margin-right: 10px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              인천
+            </button>
+            <button
+              id="busan"
+              style="
+                width: 50px;
+                border-radius: 10px;
+                color: #2524ff;
+                background-color: white;
+                border-color: gray;
+              "
+            >
+              부산
+            </button>
+          </div>
+          <div
+            class="loc1"
+            style="
+              width: 220px;
+              display: flex;
+              padding-top: 5%;
+              text-align: left;
+              border-color: #b70000;
+            "
+          >
+            <button
+              id="ulsan"
+              style="
+                width: 45px;
+                margin-right: 10px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              울산
+            </button>
+            <button
+              id="kang"
+              style="
+                width: 65px;
+                margin-right: 10px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              강원도
+            </button>
+            <button
+              id="chung"
+              style="
+                width: 70px;
+                border-radius: 10px;
+                background-color: white;
+                color: #2524ff;
+                border-color: gray;
+              "
+            >
+              충청남도
+            </button>
+          </div>
+        </div>
+        <div
+          id="search-result"
+          style="
+            padding-top: 15%;
+            font-size: 13px;
+            color: black;
+            font-weight: bold;
+            text-align: left;
+          "
+        >
+          검색 결과
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e96ca9c80e8886568b2c9aeb383d02b6"
+    ></script>
+    <script>
+      var container = document.getElementById("map");
+      var options = {
+        center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
+        level: 3,
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+      var positions = [
+        {
+          title: "미식본좌",
+          latlng: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
+        },
+        {
+          title: "생태연못",
+          latlng: new kakao.maps.LatLng(33.450936, 126.569477),
+        },
+        {
+          title: "텃밭",
+          latlng: new kakao.maps.LatLng(33.450879, 126.56994),
+        },
+        {
+          title: "근린공원",
+          latlng: new kakao.maps.LatLng(33.451393, 126.570738),
+        },
+      ];
+
+      var imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+      for (var i = 0; i < positions.length; i++) {
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          map: map, // 마커를 표시할 지도
+          position: positions[i].latlng, // 마커를 표시할 위치
+          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커 이미지
+        });
+      }
+    </script>
+  </body>
+</html>
