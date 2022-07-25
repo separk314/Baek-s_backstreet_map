@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Info</title>
+    <link rel="stylesheet" href="info_style.css" />
+    <!-- 폰트 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- svg Kit코드 -->
+    <script
+      src="https://kit.fontawesome.com/eefa3334e3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="in-header">
+        <div class="home">
+          <a href="header.html"
+            ><img
+              id="mainLogo"
+              height="37"
+              width="183"
+              src="titlelogo_mainscreen.png"
+          /></a>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="가게 이름을 검색해보세요" />
+          <img
+            class="bt"
+            src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+          />
+          <div class="search-title">검색</div>
+        </div>
+        <div class="login">로그인</div>
+        <div class="regi">회원가입</div>
+      </div>
+    </div>
+    <!-- 본문 -->
+    <div class="page">
+      <!-- 뒷 배경(사진) -->
+      <div class="background">
+        <!-- <img class="backgroundImg" src="restaurant_background_img.jpg" /> -->
+        <p>background</p>
+      </div>
+      <div class="container">
+        <!-- 가게 정보 -->
+        <div class="info">
+          <div class="infoHeader">
+            <span class="name">군포 비빔밥</span>
+            <div class="preference">
+              <span class="like">
+                <span class="likeSvg">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M128 447.1V223.1c0-17.67-14.33-31.1-32-31.1H32c-17.67 0-32 14.33-32 31.1v223.1c0 17.67 14.33 31.1 32 31.1h64C113.7 479.1 128 465.6 128 447.1zM512 224.1c0-26.5-21.48-47.98-48-47.98h-146.5c22.77-37.91 34.52-80.88 34.52-96.02C352 56.52 333.5 32 302.5 32c-63.13 0-26.36 76.15-108.2 141.6L178 186.6C166.2 196.1 160.2 210 160.1 224c-.0234 .0234 0 0 0 0L160 384c0 15.1 7.113 29.33 19.2 38.39l34.14 25.59C241 468.8 274.7 480 309.3 480H368c26.52 0 48-21.47 48-47.98c0-3.635-.4805-7.143-1.246-10.55C434 415.2 448 397.4 448 376c0-9.148-2.697-17.61-7.139-24.88C463.1 347 480 327.5 480 304.1c0-12.5-4.893-23.78-12.72-32.32C492.2 270.1 512 249.5 512 224.1z"
+                    />
+                  </svg>
+                </span>
+                <span>79%</span>
+              </span>
+              <span class="dislike">
+                <span class="dislikeSvg">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M96 32.04H32c-17.67 0-32 14.32-32 31.1v223.1c0 17.67 14.33 31.1 32 31.1h64c17.67 0 32-14.33 32-31.1V64.03C128 46.36 113.7 32.04 96 32.04zM467.3 240.2C475.1 231.7 480 220.4 480 207.9c0-23.47-16.87-42.92-39.14-47.09C445.3 153.6 448 145.1 448 135.1c0-21.32-14-39.18-33.25-45.43C415.5 87.12 416 83.61 416 79.98C416 53.47 394.5 32 368 32h-58.69c-34.61 0-68.28 11.22-95.97 31.98L179.2 89.57C167.1 98.63 160 112.9 160 127.1l.1074 160c0 0-.0234-.0234 0 0c.0703 13.99 6.123 27.94 17.91 37.36l16.3 13.03C276.2 403.9 239.4 480 302.5 480c30.96 0 49.47-24.52 49.47-48.11c0-15.15-11.76-58.12-34.52-96.02H464c26.52 0 48-21.47 48-47.98C512 262.5 492.2 241.9 467.3 240.2z"
+                    />
+                  </svg>
+                </span>
+                <span>21%</span>
+              </span>
+            </div>
+          </div>
+          <hr />
+          <div class="sub_info">
+            <div class="locate">
+              <span class="locateSvg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192H384z"
+                  />
+                </svg>
+              </span>
+              <span>경기도 군포시 산본로323번길 10-6 산본플라자</span>
+            </div>
+            <div class="menu">
+              <span class="menuSvg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"
+                  />
+                </svg>
+              </span>
+              <span>대표 메뉴: 비빔밥</span>
+            </div>
+          </div>
+          <hr />
+          <div class="youtubeContainer">
+            <div class="check">
+              <span class="videoSvg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM176 168V344C176 352.7 180.7 360.7 188.3 364.9C195.8 369.2 205.1 369 212.5 364.5L356.5 276.5C363.6 272.1 368 264.4 368 256C368 247.6 363.6 239.9 356.5 235.5L212.5 147.5C205.1 142.1 195.8 142.8 188.3 147.1C180.7 151.3 176 159.3 176 168V168z"
+                  />
+                </svg>
+              </span>
+              <span>이 가게가 나온 방송을 확인해보세요!</span>
+            </div>
+            <div class="youtube">
+              <button class="youtubeVideo">
+                <img
+                  class="channelImg"
+                  src="https://yt3.ggpht.com/ytc/AKedOLT9Uj3ce_9u8dVShStyKxsuicxvWH_vjJrXdK69=s176-c-k-c0x00ffffff-no-rj"
+                />
+              </button>
+              <div class="description">
+                <div class="videoName">
+                  백종원의 쓴소리, 군포 시장족발 시식평[화제의1분/백종원의
+                  골목식당]
+                </div>
+                <p>Youtube 스브스 예능맛집</p>
+                <p>2020년 3월 26일</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 리뷰 -->
+        <div class="reviewContainer">
+          <div class="reviewHeader">
+            <span>최근 리뷰</span>
+            <button>리뷰 등록하기</button>
+          </div>
+          <div class="review">
+            <div class="review_profile">
+              <div class="svgWrapper">
+                <span class="profileSvg">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div class="userContainer">
+                <div class="userInfo">
+                  <span>숨마번</span>
+                  <span>2022.07.14</span>
+                </div>
+                <div class="buttons">
+                  <button>수정</button>
+                  <button>삭제</button>
+                </div>
+              </div>
+            </div>
+            <div class="review_body">
+              <img />
+              <div>
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다.
+              </div>
+            </div>
+          </div>
+          <div class="review">
+            <div class="review_profile">
+              <div class="svgWrapper">
+                <span class="profileSvg">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div class="userContainer">
+                <div class="userInfo">
+                  <span>숨마번</span>
+                  <span>2022.07.14</span>
+                </div>
+                <div class="buttons">
+                  <button>수정</button>
+                  <button>삭제</button>
+                </div>
+              </div>
+            </div>
+            <div class="review_body">
+              <img />
+              <div>
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다. 리뷰 텍스트를 적는 공간입니다.
+                리뷰 텍스트를 적는 공간입니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="info_js.js"></script>
+  </body>
+</html>
