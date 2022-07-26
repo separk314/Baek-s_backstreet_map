@@ -52,13 +52,13 @@ body {
 .text {
   position: absolute;
   top: 230px;
-  left: 300px;
+  left: 15%;
 }
 .highlight {
   font-family: "KoreanYNMYTB";
   font-style: normal;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.5vw;
   line-height: 70px;
   display: flex;
   flex-direction: column;
@@ -70,21 +70,21 @@ body {
   font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1vw;
   line-height: 23px;
   color: #6d6d6d;
 }
 /* img_container - body */
 #img_container {
   position: absolute;
-  width: 100%;
-  left: 400px;
+  width: 40%;
+  right: 10%;
   top: 100px;
   bottom: 50px;
 }
 .slide_wrap {
   position: relative;
-  width: 400px;
+  width: 100%;
   margin: auto;
   padding-bottom: 30px;
 }
@@ -96,7 +96,7 @@ body {
 .slide_content {
   display: table;
   float: left;
-  width: 400px;
+  width: 20%;
   height: 400px;
 }
 .slide_content > p {
@@ -107,8 +107,11 @@ body {
   font-weight: bold;
   color: #555;
 }
-.slide_content.slide01 {
+.slide_content.slide01.img1 {
   background-color: aquamarine;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 .slide_content.slide02 {
   background: #9fd6c2;
