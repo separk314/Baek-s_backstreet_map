@@ -21,7 +21,7 @@ body {
   src: url("KoreanYNMYTB.woff") format("woff");
 }
 
-/* 헤더 */
+/***** 헤더 *****/
 .search img {
   position: absolute;
   width: 17px;
@@ -50,7 +50,7 @@ input {
 }
 .home {
   padding-left: 10%;
-  font-size: 25px;
+  font-size: 1.3021vw;
   font-weight: bold;
   font-family: sans-serif;
 }
@@ -93,20 +93,27 @@ input {
   width: 300px;
 }
 
-/* 본문 */
-.page {
+/***** 본문 *****/
+#page {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.background {
+#restImgWrapper {
   position: relative;
-  background-color: lightgray;
   height: 350px;
-  font-weight: bold;
-  font-size: 56px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.container {
+#restImgWrapper img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  margin: auto;
+}
+#pageContainer {
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -116,8 +123,8 @@ input {
   margin-left: 10%;
 }
 
-/* 가게 정보 부분(info) */
-.info {
+/***** 가게 정보 부분(info) *****/
+#infoContainer {
   height: 60%;
   background-color: white;
   border-color: #f6f6f6;
@@ -126,30 +133,37 @@ input {
   min-width: 45%;
   box-shadow: 3px 3px 3px lightgray;
 }
-.infoHeader {
+
+/* 구분선(line) */
+.line {
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+/* #infoHeader (가게이름, 좋아요/싫어요) */
+#infoHeader {
   display: flex;
   justify-content: space-between;
   padding-left: 10%;
   padding-right: 10%;
 }
-.name {
+#infoHeader .rest_name {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 1.3542vw;
   line-height: 46px;
 }
-.preference {
+#infoHeader #preference {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
-  min-width: 45%;
+  width: 150px;
 }
-.like,
-.dislike {
+#preference .prefer_container {
   display: flex;
   justify-content: space-evenly;
 }
-.likeSvg,
-.dislikeSvg {
+.prefer_container .like_svg,
+.dislike_svg {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -157,28 +171,25 @@ input {
   fill: black;
   cursor: pointer;
 }
-.dislikeSvg {
+.prefer_container .dislike_svg {
   margin-top: 3px;
 }
 
-.sub_info {
+/* #subInfo (가게 주소, 전화번호, 유명메뉴) */
+#subInfo {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 5%;
+  font-weight: 400;
+  font-size: 0.8333vw;
+  line-height: 23px;
 }
-.line {
-  margin-bottom: 3%;
-  margin-top: 3%;
-}
-.locate,
-.menu {
+#subInfo .subInfo_container {
   display: flex;
-  align-items: center;
   margin: 1%;
 }
-.locateSvg,
-.menuSvg {
+#subInfo .subInfo_svg {
   display: inline-block;
   height: 20px;
   width: 20px;
@@ -187,14 +198,15 @@ input {
   fill: black;
 }
 
-.youtubeContainer {
+/* #youtubeContainer (유튜브 영상, 유튜브 정보) */
+#youtubeContainer {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 5px;
 }
-.check {
+#youtubeContainer .msg {
   position: relative;
   width: 300px;
   display: flex;
@@ -204,185 +216,157 @@ input {
   justify-content: space-evenly;
   padding-left: 5%;
 }
-.check span {
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 23px;
-}
-.videoSvg {
+.msg_svg {
   display: inline;
   width: 20px;
   height: 20px;
   fill: black;
 }
-.youtube {
+.msg span {
+  font-weight: bold;
+  font-size: 0.8333vw;
+  line-height: 23px;
+}
+#youtubeContainer .youtube {
   display: flex;
   padding-left: 5%;
 }
-.youtubeVideo {
+.youtube .youtube_btn {
   width: 170%;
   cursor: pointer;
 }
-.description {
+.youtube .youtube_info {
   padding-left: 5%;
   display: inline-block;
   text-align: left;
 }
-.videoName {
+.youtube_info .youtube_title {
   padding-bottom: 25px;
-}
-.description p {
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.8333vw;
+  line-height: 23px;
+}
+.youtube_info p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7813vw;
   line-height: 22px;
   color: #9b9b9b;
 }
-.videoName {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-}
 
-/* 리뷰 컨테이너 */
-.reviewContainer {
+/***** 리뷰 부분(#reviewContainer) *****/
+#reviewContainer {
   height: 100%;
+  width: 50%;
   display: inline-flex;
   flex-direction: column;
   padding: 5px;
   margin-top: 140px;
   margin-left: 50px;
 }
-.reviewHeader {
+
+/* #reviewHeader */
+#reviewContainer #reviewHeader {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 1.25vw;
   line-height: 35px;
 }
-.reviewHeader span {
+#reviewHeader span {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.25vw;
   line-height: 35px;
 }
-.reviewHeader button {
+#reviewHeader button {
   font-family: "Noto Sans KR";
   font-style: bold;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.3542vw;
   line-height: 23px;
   border: 0;
   outline: 0;
   background-color: white;
   cursor: pointer;
 }
-.reviewHeader button:hover {
+#reviewHeader button:hover {
   background-color: #efefef;
 }
-.reviews {
+
+/* #reviewList (리뷰 목록) */
+#reviewContainer #reviewList {
   display: flex;
   flex-direction: column;
   overflow: auto;
   height: 45%;
+  width: 100%;
 }
 /* 스크롤바 */
-.reviews::-webkit-scrollbar {
+#reviewList::-webkit-scrollbar {
   width: 10px; /* 스크롤바의 너비 */
 }
-.reviews::-webkit-scrollbar-thumb {
+#reviewList::-webkit-scrollbar-thumb {
   height: 30%; /* 스크롤바의 길이 */
   background: #acacac; /* 스크롤바의 색상 */
 
   border-radius: 10px;
 }
-.reviews::-webkit-scrollbar-track {
+#reviewList::-webkit-scrollbar-track {
   background: #f2f2f2; /*스크롤바 뒷 배경 색상*/
 }
 
-/* 리뷰 1개 */
-.review {
+/* review (리뷰 1개) */
+#reviewList .review {
   padding: 5px;
   margin: 5px;
   margin-left: 30px;
 }
-.review_profile {
+.review .review_profile {
   display: flex;
   flex-direction: row;
 }
-.svgWrapper {
+.review_profile .profile_svgWrapper {
   display: inline-block;
   width: 56px;
   height: 50px;
   margin: 5px;
-
   border-radius: 50%;
   background-color: #d9d9d9;
 }
-.profileSvg svg {
+.profile_svg svg {
   fill: white;
   width: 30px;
   margin-top: 5px;
 }
-.userContainer {
+.review_profile .user_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 5px;
   width: 100%;
 }
-.userInfo {
+.user_container .review_info {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
-.buttons button {
+.user_container .review_buttons button {
   background-color: white;
   border: 0;
   outline: 0;
   fill: gray;
   cursor: pointer;
 }
-.buttons button:hover {
+.review_buttons button:hover {
   background-color: #efefef;
 }
-.reviewBody {
-  display: flex;
-  flex-direction: row;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 5px;
-}
-.imgWrapper {
-  position: relative;
-  width: 190px;
-  height: 190px;
-  margin-right: 20px;
-  overflow: hidden;
-  padding-left: 190px;
-  float: left;
-}
-.imgWrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: auto;
-  transform: translate(50, 50);
-}
-.reviewText {
-  float: right;
-}
+
 .keywords {
   display: flex;
   justify-content: flex-start;
@@ -397,4 +381,36 @@ input {
   border-style: none;
   background: #efefef;
   color: #000000;
+}
+
+.review .review_body {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 5px;
+}
+.review_body .review_imgWrapper {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin-right: 20px;
+  overflow: hidden;
+  padding-left: 190px;
+  float: left;
+}
+.review_imgWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: auto;
+  transform: translate(50, 50);
+}
+.review_textContainer {
+  float: right;
 }
