@@ -57,6 +57,7 @@ input {
 #mainLogo {
   width: 173px;
   height: 27px;
+  margin-right: 15px;
 }
 .in-header {
   width: 100%;
@@ -122,10 +123,17 @@ input {
   margin-right: 10%;
   margin-left: 10%;
 }
+.text_style {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
 
 /***** 가게 정보 부분(info) *****/
 #infoContainer {
-  height: 60%;
+  height: 70%;
+  width: 45%;
   background-color: white;
   border-color: #f6f6f6;
   border-radius: 10px;
@@ -149,7 +157,7 @@ input {
 }
 #infoHeader .rest_name {
   font-weight: bold;
-  font-size: 1.3542vw;
+  font-size: 32px;
   line-height: 46px;
 }
 #infoHeader #preference {
@@ -181,9 +189,6 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 5%;
-  font-weight: 400;
-  font-size: 0.8333vw;
-  line-height: 23px;
 }
 #subInfo .subInfo_container {
   display: flex;
@@ -197,6 +202,12 @@ input {
   margin-right: 2%;
   fill: black;
 }
+.location,
+.menu {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+}
 
 /* #youtubeContainer (유튜브 영상, 유튜브 정보) */
 #youtubeContainer {
@@ -208,12 +219,11 @@ input {
 }
 #youtubeContainer .msg {
   position: relative;
-  width: 300px;
   display: flex;
   bottom: 5px;
   margin-bottom: 2%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   padding-left: 5%;
 }
 .msg_svg {
@@ -221,10 +231,11 @@ input {
   width: 20px;
   height: 20px;
   fill: black;
+  margin-right: 5px;
 }
 .msg span {
   font-weight: bold;
-  font-size: 0.8333vw;
+  font-size: 15px;
   line-height: 23px;
 }
 #youtubeContainer .youtube {
@@ -233,12 +244,22 @@ input {
 }
 .youtube .youtube_btn {
   width: 170%;
+  height: auto;
   cursor: pointer;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: white;
+}
+.youtube_btn img {
+  width: 100%;
+  height: 100%;
 }
 .youtube .youtube_info {
   padding-left: 5%;
   display: inline-block;
   text-align: left;
+  overflow: hidden;
 }
 .youtube_info .youtube_title {
   padding-bottom: 25px;
@@ -246,6 +267,11 @@ input {
   font-weight: 400;
   font-size: 0.8333vw;
   line-height: 23px;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .youtube_info p {
   margin-block-start: 0em;
@@ -269,33 +295,33 @@ input {
 }
 
 /* #reviewHeader */
-#reviewContainer #reviewHeader {
+#reviewContainer .review_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 500;
-  font-size: 1.25vw;
+  font-size: 24px;
   line-height: 35px;
 }
-#reviewHeader span {
+.review_header span {
   font-weight: bold;
-  font-size: 1.25vw;
+  font-size: 24px;
   line-height: 35px;
 }
-#reviewHeader button {
+.review_header button {
   font-family: "Noto Sans KR";
   font-style: bold;
   font-weight: 400;
-  font-size: 1.3542vw;
+  font-size: 16px;
   line-height: 23px;
   border: 0;
   outline: 0;
   background-color: white;
   cursor: pointer;
 }
-#reviewHeader button:hover {
+.review_header button:hover {
   background-color: #efefef;
 }
 

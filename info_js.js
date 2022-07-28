@@ -42,3 +42,9 @@ const reviewItemTemplate = (newReview) => {
 
 const newReview = reviewItemTemplate("첫 번째 리뷰");
 $reviewList.insertAdjacentHTML("afterbegin", newReview);
+
+const newReview2 = reviewItemTemplate("두 번째 리뷰");
+$reviewList.insertAdjacentHTML("afterbegin", newReview2);
+
+const newReview3 = reviewItemTemplate("세 번째 리뷰");
+$reviewList.insertAdjacentHTML("afterbegin", newReview3);
