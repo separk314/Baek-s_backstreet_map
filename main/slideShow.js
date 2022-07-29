@@ -5,7 +5,7 @@
   const slideBtnPrev = document.querySelector(".slide_btn_prev"); // prev button
   const pagination = document.querySelector(".slide_pagination");
   const slideLen = slideContents.length; // slide length
-  const slideWidth = 400; // slide width
+  const slideWidth = 840; // slide width
   const slideSpeed = 300; // slide speed
   const startNum = 0; // initial slide index (0 ~ 4)
 
