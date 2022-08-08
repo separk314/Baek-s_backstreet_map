@@ -241,6 +241,8 @@ input {
 #youtubeContainer .youtube {
   display: flex;
   padding-left: 5%;
+  height: 100%;
+  width: 100%;
 }
 .youtube .youtube_btn {
   width: 170%;
@@ -257,7 +259,8 @@ input {
 }
 .youtube .youtube_info {
   padding-left: 5%;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   text-align: left;
   overflow: hidden;
 }
