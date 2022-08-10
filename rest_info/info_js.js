@@ -4,10 +4,8 @@ const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
 const $date = document.getElementById("date");
 
-{
-  /* <button class="edit">수정</button>
+/* <button class="edit">수정</button>
 <button class="delete">삭제</button> */
-}
 
 const reviewItemTemplate = (newReview) => {
   return `
