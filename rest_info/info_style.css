@@ -98,8 +98,9 @@ input {
 #page {
   position: absolute;
   width: 100%;
-  height: 100%;
-  overview: scroll;
+  /* height: 100%; */
+  /* overflow-x: scroll; */
+  overflow-y: hidden;
 }
 #restImgWrapper {
   position: relative;
@@ -133,8 +134,10 @@ input {
 
 /***** 가게 정보 부분(info) *****/
 #infoContainer {
-  height: 70%;
-  width: 45%;
+  /* height: 70%;
+  width: 45%; */
+  width: 680px;
+  height: 584px;
   background-color: white;
   border-color: #f6f6f6;
   border-radius: 10px;
