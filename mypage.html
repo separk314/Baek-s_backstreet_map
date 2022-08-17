@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>백종원 골목식당</title>
+        <style>
+            * {
+                margin: 0;
+            }
+            .search img {
+              position: absolute;
+              width: 17px;
+              top: 10px;
+              right: 90px;
+            }
+            .header {
+                position: fixed;
+                width: 100%;
+                height: 60px;
+                padding-top: 20px;
+                background-color: white;
+                z-index: 1;
+            }
+            .home {
+              padding-left: 10%;
+              font-size: 25px;
+              font-weight: bold;
+              font-family: sans-serif;
+            }
+            .bt {
+                cursor: pointer;
+            }
+            .in-header {
+              width: 100%;
+              display: flex;
+            }
+            .search {
+              position: relative;
+              width: 350px !important;
+              margin-left: auto;
+              padding-right: 150px;
+            }
+            .search-title {
+              position: absolute;
+              width: 50px;
+              font-size: 14px;
+              font-weight: 900;
+              top: 9px;
+              left: 17px;
+            }
+            .mypage {
+              padding-right: 16%;
+              padding-top: 8px;
+              font-size: 15px;
+              font-weight: 600;
+              cursor: pointer;
+            }
+            .profile img {
+              width: 130px;
+              cursor: pointer;
+            }
+            hr {
+              width: 620px;
+              height: 0px;
+              border: 1px solid #ACACAC;
+            }
+            a:visited {
+              color: #9B9B9B;
+            }
+            input.underline { 
+                
+                width: 500px;
+                margin-bottom: 0px;
+                font-size: 20px;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+      <script>
+        var fixed = false;
+        function Changes() {
+          if (fixed === false) {
+            console.log("fixed is false");
+            document.getElementById("nick").innerHTML =
+              "<input class='underline' id='nickname-fix' type='text' name='nickk' style='width: 250px;'>";
+            document.getElementById("nick-button").innerHTML =
+              "<input class='underline' id='nick-button' type='button' value='중복 확인' style='width: 82px; height: 27px; font-size: 16px; border-radius: 8px; border-color: gray; color: white; background-color: gray; cursor: pointer; border: 0; outline: 0;'>";
+            fixed = true;
+          } else {
+            console.log("fixed is true");
+            var nfix = document.getElementById("nickname-fix").value;
+            console.log(nfix);
+            var nfix1 = document.getElementById("nick").value;
+            console.log(nfix1);
+            document.getElementById("nick-button").innerHTML =
+              "<input class='underline' type='button' value='변경 하기' style='width: 82px; height: 27px; font-size: 16px; border-radius: 8px; border-color: #477CBB; color: white; background-color: #477CBB; border: 0; outline: 0; cursor: pointer;'>";
+            fixed = false;
+          }
+        }
+        function Changes1() {
+          document.getElementById('eml').innerHTML = "<input class='underline' type='text' name='emll' style='width: 250px;'>";
+          document.getElementById('eml-button').innerHTML = "<input class='underline' type='button' value='중복 확인' style='width: 82px; height: 27px; font-size: 16px; border-radius: 8px; border-color: gray; color: white; background-color: gray; border: 0; outline: 0; cursor: pointer;'>";
+        }
+        function Changes2() {
+          document.getElementById('ide').innerHTML = "<input class='underline' type='text' name='idee' style='width: 250px;'>";
+          document.getElementById('ide-button').innerHTML = "<input class='underline' type='button' value='중복 확인' style='width: 82px; height: 27px; font-size: 16px; border-radius: 8px; border-color: gray; color: white; background-color: gray; border: 0; outline: 0; cursor: pointer;'>";
+        }
+        
+      </script>
+        <div class="background">
+            <div class="header">
+              <div class="in-header">
+                <div class="home"><a href="header.html"><img src="../titlelogo_mainscreen.png" alt=""></a></div>
+                <div class="search">
+                  <input type="text" placeholder="가게 이름을 검색해보세요" style="width: 100%;
+                  border-radius: 15px;
+                  padding: 10px 12px;
+                  padding-left: 55px;
+                  font-size: 14px;
+                  font-weight: 600;
+                  color: gray;
+                  border: 1px solid #f6f6f6;
+                  background-color: #f6f6f6;" />
+                  <img
+                    class="bt"
+                    src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+                  />
+                  <div class="search-title">검색</div>
+                </div>
+                <div class="mypage">마이페이지</div>
+              </div>
+            </div>
+            <div class="background-down" style="background-color: #F5F5F5; height: 960px; display: flex;">
+              <img style="position: absolute; width: 400px; padding-left: 16%; padding-right: 15%; padding-top: 15%;" src="./배경 꾸밈.png" alt=""/>
+              <div class="profile" style="padding-top: 20%; padding-left: 23%; padding-right: 15%; text-align: center;">
+                <div class="profile-image" style=""><img class="profile-img" style="position: absolute; width: 34px; padding-left: 5%; padding-top: 4.7%;" src="./프로필 편집.png" alt=""/><img style="border-radius: 140px; z-index: 30;" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIHBg8SBw4PEhATDg0PFRAPEA8ODQ0RFREWFhURExYYKCggGBslHRUfITEhJSkrLi4uFx8zODMtNyg5OisBCgoKDg0OFw8QGjIlHSItNy0tKy4tKzctLy0tKzgtLS0tLSstLi0rNy0tLC0tKy0rOC0tKy03LS0rLTctKy0rN//AABEIAOAA4QMBIgACEQEDEQH/xAAaAAEAAgMBAAAAAAAAAAAAAAAABAUCAwYB/8QANhABAAECAgYIBAUFAQAAAAAAAAECAwQRBSExUWFxEhMiMkGRocEzcoGxNFJiotEUQoLh8SP/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAwIBBAX/xAAdEQEBAQEAAgMBAAAAAAAAAAAAAQIRAzESIUET/9oADAMBAAIRAxEAPwDrAH0XzQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAe00zVPZiZ5a26nB3KtlE/XKHOu8aBInBXI/s8piWmuiaJ7cTHOMjsOViA64AAAAAAAAAAAAAAAAAAAAAAJ+F0f0ozv6v0+P1Z6OwuURXcjX4Ru4rBLW/yK5x+1jbtxbjKiIjkyBNQeVUxVGVURMcXoCBidHRMZ2NU/l8J5KyqOjOVW10SHj8L1tHSojtR+6FM7/KnrH7FSAqkAAAAAAAAAAAAAAAAAANuEtddfiPDbPKGpYaIo7VU8oZ1eRrM7VlGqNQCC4AAAAACm0hZ6rETlsnXHujLTS1Gdqmd1WXnCrXzexDU5QBpkAAAAAAAAAAAAAAAAWeiPhVfNH2VifomvK5VG+Iny/wCs79N49rMBBYAAAAABE0p+F/ypVCz0tX2KaeOfkrFsekd+wBtgAAAAAAAAAAAAAAAAZ2LnU3YqjwnzhgDroaKorpiadkxm9VOAxfUz0bnd3/l/0tonONSGpxfN7ABl0AAJnKNYrdIYzOJotTzn2h2TrlvEXGXuvvzMbNkcmkF4hQB1wAAAAAAAAAAAAAAAAAASMNjKrGqNdO6fZHHLOuy8XNrHUXNs5Tun+UiKoq2TDniJy2MXxtzyOimctrRdxdFrbVE8I1ypJnPaH8y+RLxOOqvRlR2afWUQG5OMW9AHXAAAAAAAAAAAAAAAAAAAZ2bNV6rK3H8Qs8Po+m3rudqf2s3UjUzarLdmq7P/AJ0zP2Srejaqu/MR6ytYjKNQnd1SYiDToymO9VVPLKGcaOo/V5pY58q18YiTo6jj5sKtGUz3aqo55SnB8qfGKq5oyqO5MT6Si3bNVr4lMx9l+TGca3Zus3Ec6Le/o+m58Pszw2eSsv2KrFWVyPr4SpNSp3NjWA0yAAAAAAAAAAAAAAJGDwk4ic51U79/CHmDw/8AUXOEbZ9l1RTFFMRTGUQxrXPpTOe/by3bi1RlbjKGQIqgAAAAAAADG5RFynKuM4ZAKfGYObE5066fWOaK6GqOlTlVsU2Nw39PX2e7OzhwVzrv1UtZ59xHAUTAAAAAAAAAACmOlVEU7Z1Cbou10rs1TsjZzly3kdk7eLDDWYsWoiPrO+W0HnegAAAAAAAAAAAAYX7UXrUxV4+k72YDnrlE265irbE5PFhpWzlMVRyn2V70S9iFnKAOsgAAAAAAAC60fb6GFp46/NS7XQ0R0aIiPCIhPyVTxx6AkqAAAAAAAAAAAAAA1Yu31uHqjhn9YULo3P3aehdqjdVMeqvjqfkjEBRIAAAAAAABlajO7T80fd0Cgs/Gp+an7r9LyK+MATUAAAAAAAAAAAAAAFHjIyxVfzLxR438XXz9lPH7Y8nppAVRAAAAf//Z" alt="">
+                </div>
+                <div class="profile-intro" style="font-family: 'Noto Sans KR';
+                font-style: normal;
+                font-weight: 900;
+                font-size: 32px;
+                line-height: 46px;">
+                  <span>000 님<br></span>
+                  <span>반가워유!</span>
+                  <div class="secession" style="font-family: 'Noto Sans KR';
+                  font-style: normal;
+                  font-weight: 900;
+                  font-size: 16px;
+                  line-height: 23px;
+                  color: #6D6D6D;
+                  padding-top: 15px;">회원 탈퇴</div>
+                </div>
+              </div>
+              <div class="introduce" style="padding-top: 10%;">
+                <div class="intro-title" style="font-size: 24px; font-weight: 900; line-height: 34.75px; font-family: 'Noto Sans KR'; padding: 15px;">나의 정보</div>
+                <div class="intro-expla" style="
+                background-color: white; 
+                width: 620px; 
+                height: 448px; 
+                border-radius: 10px; 
+                font-family: 'Noto Sans KR';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 29px;
+                display: flex;
+                flex-direction: column;
+                padding: 30px 40px 80px;
+                gap: 60px;
+                border: 2px solid #ACACAC;
+                ">
+                  <div class="nickname" style="display: flex;">
+                    <div class="nickname-title" style="margin-right: 20%;">닉네임</div>
+                    <div class="nickname-write" id="nick">ㅇㅇ</div>
+                    <div class="nickname-fix" id="nick-button" style="cursor: pointer; margin-left: auto; font-size: 16px; font-family: 'Noto Sans KR';font-style: normal; font-weight: 400; font-size: 16px; line-height: 23px; color: #9B9B9B;" onclick="Changes()">수정✏️</div>
+                  </div>
+                  <hr>
+                  <div class="email" style="display: flex;">
+                    <div class="email-title" style="margin-right: 20%;">이메일</div>
+                    <div class="email-write" id="eml">dd@dd.dd</div>
+                    <div class="email-fix" id="eml-button" style="cursor: pointer; margin-left: auto; font-size: 16px; font-family: 'Noto Sans KR';font-style: normal; font-weight: 400; font-size: 16px; line-height: 23px; color: #9B9B9B;" onclick="Changes1()">수정✏️</div>
+                  </div>
+                  <hr>
+                  <div class="id" style="display: flex;">
+                    <div class="id-title" style="margin-right: 20%;">아이디</div>
+                    <div class="id-write" id="ide">ab***</div>
+                    <div class="id-fix" id="ide-button" style="cursor: pointer; margin-left: auto; font-size: 16px; font-family: 'Noto Sans KR';font-style: normal; font-weight: 400; font-size: 16px; line-height: 23px; color: #9B9B9B;" onclick="Changes2()">수정✏️</div>
+                  </div>
+                  <hr>
+                  <div class="pw" style="display: flex;">
+                    <div class="pw-title" style="margin-right: 16%;">비밀번호</div>
+                    <div class="pw-write">ㅇㅇ</div>
+                    <div class="pw-fix" style="cursor: pointer; margin-left: auto; font-size: 16px; font-family: 'Noto Sans KR';font-style: normal; font-weight: 400; font-size: 16px; line-height: 23px; color: #9B9B9B; "><a href="pwchange.html">수정✏️</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
