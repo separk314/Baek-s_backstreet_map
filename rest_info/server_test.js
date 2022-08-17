@@ -44,8 +44,9 @@ app.get("/", (req, res) => {
   console.log("get users' data 5");
   // const users_data = res.json(users);
   // module.exports = users_data;
-  module.exports = users;
 });
+// module.exports = { users };
+exports.users;
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
