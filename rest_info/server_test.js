@@ -41,7 +41,10 @@ const users = [
 ];
 
 app.get("/", (req, res) => {
-  res.json(users);
+  console.log("get users' data 5");
+  // const users_data = res.json(users);
+  // module.exports = users_data;
+  module.exports = users;
 });
 
 app.listen(port, () => {

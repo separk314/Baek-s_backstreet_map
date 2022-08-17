@@ -5,7 +5,7 @@ body {
   margin: 0;
   text-align: center;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 *,
 *:before,
@@ -99,8 +99,6 @@ input {
   position: absolute;
   width: 100%;
   /* height: 100%; */
-  /* overflow-x: scroll; */
-  overflow-y: hidden;
 }
 #restImgWrapper {
   position: relative;
@@ -449,3 +447,98 @@ input {
 }
 
 /* 신고 팝업 */
+.review_buttons {
+  width: 100%;
+}
+.modal-btn-box button {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  background-color: #3d1717;
+  border: 1px solid #e1e1e1;
+  cursor: pointer;
+  padding-top: 8px;
+}
+.popup-wrap {
+  z-index: 10;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  padding: 15px;
+}
+.popup {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: gray;
+  box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
+}
+.popup-head {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+}
+.head-title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: -3px;
+  text-align: left;
+}
+.popup-body {
+  width: 100%;
+  background-color: #ffffff;
+}
+.body-content {
+  width: 100%;
+  padding: 30px;
+}
+.body-titlebox {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.body-contentbox {
+  word-break: break-word;
+  min-height: 100px;
+  max-height: 200px;
+}
+.popup-foot {
+  width: 100%;
+  height: 50px;
+}
+.pop-btn {
+  display: inline-flex;
+  width: 50%;
+  height: 100%;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+}
+.pop-btn.confirm {
+  border-right: 1px solid gray;
+}
+
+#report_btns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.report_btn {
+  margin: 5px;
+}
