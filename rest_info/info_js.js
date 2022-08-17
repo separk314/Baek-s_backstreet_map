@@ -4,8 +4,18 @@ const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
 const $date = document.getElementById("date");
 
+import get_name from "./export_test.js";
+console.log(get_name);
+
 /* <button class="edit">수정</button>
 <button class="delete">삭제</button> */
+
+// const dataFetch = async () => {
+//   const response = await fetch("http://localhost:3100/");
+//   const data = await response.json();
+//   console.log(data);
+// };
+// const dataResult = dataFetch();
 
 const reviewItemTemplate = (newReview) => {
   return `
@@ -81,7 +91,7 @@ function fetchYoutubeAPI(youtubeURL) {
 }
 
 function updateYoutube(video) {
-  console.log(video);
+  // console.log(video);
   $youtube_title.innerText = video.snippet.title;
   $channel_img.innerHTML = `<img class="channel_img" src=${video.snippet.thumbnails?.high.url} />`;
   $uploader.innerText = video.snippet.channelTitle;
