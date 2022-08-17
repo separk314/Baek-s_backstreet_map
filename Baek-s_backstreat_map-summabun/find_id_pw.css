@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'SpoqaHanSansNeo-Regular';
+}
+
+body{
+    background-color: #fff;
+}
+
+/* 헤더부분 */
+header{
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    padding-top: 5px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+}
+.head-brand{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.head-brand img{
+    max-width: 100px;
+    max-height: 20px;
+    margin-left: 90px;
+}
+.search img {
+    position: absolute;
+    width: 17px;
+    top: 10px;
+    right: 90px;
+}
+input {
+    width: 90%;
+    border-radius: 15px;
+    padding: 10px 20px;
+    padding-left: 60px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ACACAC;
+    border: none;
+    background-color: #EFEFEF;
+}
+.search {
+    position: relative;
+    width: 500px !important;
+    margin-left: auto;
+    padding-right: 100px;
+}
+.text {
+    position: absolute;
+    top: 230px;
+    left: 15%;
+}
+.search-title {
+    position: absolute;
+    width: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    top: 9px;
+    margin-left: 16px;
+}
+.login {
+    padding-right: 5%;
+    padding-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.regi {
+    padding-right: 10%;
+    padding-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* section부분 */
+section{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url( "./background.svg" );
+    background-size: 100% 90%;
+}
+.wrap{
+	width: 500px;
+	margin: 10% auto;
+    position: relative;
+}
+.form{
+    margin-left: 9%;
+    margin-right: 9%;
+    margin-top: 10%;
+    margin-bottom: 1.7em;
+}
+.form-label {
+    color: #000;
+    font-size: 12px;
+}
+.part{
+    width: 100%;
+}
+.form-input {
+    color: #ACACAC;
+    width: 100%;
+    height: 10px;
+    font-weight: 600;
+    font-size: 1em;
+    width: 70%;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 0.3em;
+}
+.form-text{
+    color: #C82626;
+    font-size: 10px;
+    margin-bottom: 0.5em;
+}
+.form-search{
+    border: none;
+    display: inline-block;
+    background-color: #263053;
+    color: #fff;
+    padding: 3px 4px;
+    border-radius: 7px;
+    font-size: 14px;
+    width: 65px;
+    height: 30px;
+    position: absolute;
+    right:    0;
+    bottom:   0;
+    margin-bottom: 40px;
+    margin-right: 120px;
+}
+
+/* 아이디 찾기 결과 화면  */
+.find_id_result{
+    margin-left: 9%;
+    margin-right: 9%;
+    margin-top: 10%;
+    margin-bottom: 1.7em;
+    display: none;
+    align-items: center;
+}
+.find_id_text{
+    font-size: 15px;
+    color: #000000;
+    margin-left: 30%;
+    margin-bottom: 5%;
+}
+.find_id_id{
+    border: 1px solid #59679C;
+    border-radius: 15px;
+    width: 200px;
+    height: 40px;
+    margin-left: 20%;
+    text-align: center;
+}
+
+ul.tabs{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+ul.tabs li{
+    width: 183px;
+	background: none;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+
+ul.tabs li.current{
+	background: #fff;
+    box-shadow: 0px -7px 10px 0.1px rgba(0, 0, 0, 0.25);
+	color: #222;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+ul.tabs li.not-current-id{
+    background: #59679C;
+    box-shadow: 0px -7px 10px 0.1px rgba(0, 0, 0, 0.25);
+	color: #fff;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: none;
+}
+
+ul.tabs li.not-current-pw{
+    background: #59679C;
+    color: #fff;
+    box-shadow: 0px -7px 10px 0.1px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    border-top-right-radius: 20px;
+}
+
+.tab-link{
+    background: #fff;
+    color: #000;
+    box-shadow: 0px -7px 10px 0.1px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.tab-content{
+    width: 400px;
+    height: 250px;
+	display: none;
+	background: #fff;
+	padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.tab-id-content{
+    width: 400px;
+    height: 250px;
+	display: none;
+	background: #fff;
+	padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: none;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.tab-pw-content{
+    width: 400px;
+    height: 250px;
+	display: none;
+	background: #fff;
+	padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: none;
+}
+
+.tab-content.current{
+	display: inherit;
+}
