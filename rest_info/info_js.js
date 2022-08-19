@@ -1,4 +1,11 @@
+const $rest_name = document.querySelector(".rest_name");
+const $like = document.querySelector("#like");
+const $dislike = document.querySelector("#dislike");
+const $location = document.querySelector(".location");
+const $menu = document.querySelector(".menu");
+
 const $reviewList = document.querySelector("#reviewList");
+const $youtube_btn = document.querySelector("youtube_btn");
 const $channel_img = document.querySelector(".channel_img");
 const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
@@ -15,12 +22,25 @@ const dataFetch = async (id) => {
       const serverData = data.data;
       console.log(serverData);
       fetchYoutubeAPI(serverData.video);
+      updateInfo(serverData);
     });
   return response;
 };
-dataFetch(16);
+dataFetch(18);
 
-const reviewItemTemplate = (newReview) => {
+function updateInfo(data) {
+  $rest_name.innerText = data["name"];
+  $like.innerText = `${data["like"]} %`;
+  $dislike.innerText = `${100 - data["like"]} %`;
+  $location.innerText = data["introduce"];
+  $menu.innerText = data["menu"];
+}
+
+// youtube link 연결
+// $youtube_btn.addEventListener('click', )
+
+// 리뷰 등록 템플릿(다른 유저)
+const reviewItemTemplate = (name, text, createdAt) => {
   return `
   <div class="review">
   <div class="review_profile">
@@ -35,8 +55,8 @@ const reviewItemTemplate = (newReview) => {
     </div>
     <div class="user_container">
       <div class="review_info">
-        <span class="user_name">숨마번</span>
-        <span class="review_date">2022.07.14</span>
+        <span class="user_name">${name}</span>
+        <span class="review_date">${createdAt}</span>
       </div>
       <div class="review_buttons">
         <button id="modal-open">신고하기</button>  
@@ -70,11 +90,11 @@ const reviewItemTemplate = (newReview) => {
   </div>
   <!-- 키워드 -->
   <div class="keywords">
-    <button class="recommend">우동 추천해요</button>
+    <button class="recommend">추천 키워드</button>
   </div>
   <div class="review_body">
     <div class="review_textContainer">
-      <div calss="review_text">${newReview}</div>
+      <div calss="review_text">${text}</div>
     </div>
   </div>
   </div>
@@ -94,16 +114,15 @@ function fetchYoutubeAPI(youtubeURL) {
 }
 
 function updateYoutube(video) {
-  // console.log(video);
   $youtube_title.innerText = video.snippet.title;
-  // $channel_img.innerHTML = `<img class="channel_img" src=${video.snippet.thumbnails?.high.url} />`;
   $channel_img.setAttribute("src", video.snippet.thumbnails?.high.url);
   console.log($channel_img);
   $uploader.innerText = video.snippet.channelTitle;
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
 
-const newReview = reviewItemTemplate("첫 번째 리뷰");
+// 리뷰 등록
+const newReview = reviewItemTemplate("user1", "첫 번째 리뷰", "2020-01-02");
 $reviewList.insertAdjacentHTML("afterbegin", newReview);
 
 const newReview2 = reviewItemTemplate("두 번째 리뷰");
@@ -112,7 +131,7 @@ $reviewList.insertAdjacentHTML("afterbegin", newReview2);
 const newReview3 = reviewItemTemplate("세 번째 리뷰");
 $reviewList.insertAdjacentHTML("afterbegin", newReview3);
 
-// 신고하기 모달창
+/* 신고하기 모달창 */
 $(function () {
   $("#confirm").click(function () {
     //컨펌 이벤트 처리
