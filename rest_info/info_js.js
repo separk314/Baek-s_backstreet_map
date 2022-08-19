@@ -4,18 +4,21 @@ const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
 const $date = document.getElementById("date");
 
-import get_name from "./export_test.js";
-console.log(get_name);
-
 /* <button class="edit">수정</button>
 <button class="delete">삭제</button> */
 
-// const dataFetch = async () => {
-//   const response = await fetch("http://localhost:3100/");
-//   const data = await response.json();
-//   console.log(data);
-// };
-// const dataResult = dataFetch();
+// 서버 데이터 가져오기
+const dataFetch = async (id) => {
+  const response = await axios
+    .get(`http://localhost:9000/stores/${id}/detail`)
+    .then((data) => {
+      const serverData = data.data;
+      console.log(serverData);
+      fetchYoutubeAPI(serverData.video);
+    });
+  return response;
+};
+dataFetch(16);
 
 const reviewItemTemplate = (newReview) => {
   return `
@@ -93,7 +96,9 @@ function fetchYoutubeAPI(youtubeURL) {
 function updateYoutube(video) {
   // console.log(video);
   $youtube_title.innerText = video.snippet.title;
-  $channel_img.innerHTML = `<img class="channel_img" src=${video.snippet.thumbnails?.high.url} />`;
+  // $channel_img.innerHTML = `<img class="channel_img" src=${video.snippet.thumbnails?.high.url} />`;
+  $channel_img.setAttribute("src", video.snippet.thumbnails?.high.url);
+  console.log($channel_img);
   $uploader.innerText = video.snippet.channelTitle;
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
@@ -107,8 +112,7 @@ $reviewList.insertAdjacentHTML("afterbegin", newReview2);
 const newReview3 = reviewItemTemplate("세 번째 리뷰");
 $reviewList.insertAdjacentHTML("afterbegin", newReview3);
 
-fetchYoutubeAPI("https://www.youtube.com/watch?v=G0uVWsDJMVM");
-
+// 신고하기 모달창
 $(function () {
   $("#confirm").click(function () {
     //컨펌 이벤트 처리
