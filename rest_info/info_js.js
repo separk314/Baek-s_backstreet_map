@@ -98,25 +98,6 @@ function updateYoutube(video) {
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
 
-function openWindow() {
-  var popupWidth = 430;
-  var popupHeight = 475;
-  var popupX = window.screen.width / 2 - popupWidth / 2;
-  var popupY = window.screen.height / 2 - popupHeight / 2;
-
-  var option =
-    "height=" +
-    popupHeight +
-    ", width=" +
-    popupWidth +
-    ", left=" +
-    popupX +
-    ", top=" +
-    popupY;
-
-  window.open("report.html", "신고 화면", option);
-}
-
 const newReview = reviewItemTemplate("첫 번째 리뷰");
 $reviewList.insertAdjacentHTML("afterbegin", newReview);
 
