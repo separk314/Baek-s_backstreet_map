@@ -24,13 +24,25 @@ const dataFetch = async (id) => {
       fetchYoutubeAPI(serverData.video);
       updateInfo(serverData);
 
-      getVideoLink(serverData)
-        .then(addClick(link))
-        .catch((message) => console.log(message));
+      // getVideoLink(serverData)
+      //   .then(addClick(link))
+      //   .catch((message) => console.log(message));
+
+      // 리뷰 가져오기
+      const newReview = null;
+      for (let i = 0; i < serverData.reviews.length; i++) {
+        console.log(serverData.reviews[i]);
+        const newReview = reviewItemTemplate(
+          serverData.reviews[i].name,
+          serverData.reviews[i].text,
+          serverData.reviews[i].createdAt.substr(0, 10)
+        );
+        $reviewList.insertAdjacentHTML("afterbegin", newReview);
+      }
     });
   return response;
 };
-dataFetch(20);
+dataFetch(17);
 
 // youtube video link 가져오기
 const getVideoLink = (data) => {
@@ -142,16 +154,6 @@ function updateYoutube(video) {
   $uploader.innerText = video.snippet.channelTitle;
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
-
-// 리뷰 등록
-const newReview = reviewItemTemplate("user1", "첫 번째 리뷰", "2020-01-02");
-$reviewList.insertAdjacentHTML("afterbegin", newReview);
-
-const newReview2 = reviewItemTemplate("두 번째 리뷰");
-$reviewList.insertAdjacentHTML("afterbegin", newReview2);
-
-const newReview3 = reviewItemTemplate("세 번째 리뷰");
-$reviewList.insertAdjacentHTML("afterbegin", newReview3);
 
 /* 신고하기 모달창 */
 $(function () {
