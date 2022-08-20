@@ -459,7 +459,7 @@ input {
 .popup-wrap {
   z-index: 10;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -470,14 +470,14 @@ input {
   display: none;
   padding: 15px;
 }
-.popup {
+.popup-class {
   width: 100%;
   max-width: 400px;
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
   background-color: gray;
-  box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 10px 10px 1px rgba(102, 102, 102, 0.3);
 }
 .popup-head {
   width: 100%;
@@ -530,7 +530,7 @@ input {
   border-right: 1px solid gray;
 }
 
-#report_btns {
+.report_btns {
   display: flex;
   flex-direction: column;
   align-items: flex-start;

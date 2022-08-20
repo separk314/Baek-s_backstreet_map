@@ -14,6 +14,7 @@ const $date = document.getElementById("date");
 /* <button class="edit">수정</button>
 <button class="delete">삭제</button> */
 
+const reviews = [];
 // 서버 데이터 가져오기
 const dataFetch = async (id) => {
   const response = await axios
@@ -29,15 +30,15 @@ const dataFetch = async (id) => {
       //   .catch((message) => console.log(message));
 
       // 리뷰 가져오기
-      const newReview = null;
       for (let i = 0; i < serverData.reviews.length; i++) {
-        console.log(serverData.reviews[i]);
-        const newReview = reviewItemTemplate(
-          serverData.reviews[i].name,
-          serverData.reviews[i].text,
-          serverData.reviews[i].createdAt.substr(0, 10)
+        reviews.push(
+          reviewItemTemplate(
+            serverData.reviews[i].name,
+            serverData.reviews[i].text,
+            serverData.reviews[i].createdAt.substr(0, 10)
+          )
         );
-        $reviewList.insertAdjacentHTML("afterbegin", newReview);
+        $reviewList.insertAdjacentHTML("afterbegin", reviews[i]);
       }
     });
   return response;
@@ -93,9 +94,9 @@ const reviewItemTemplate = (name, text, createdAt) => {
         <span class="review_date">${createdAt}</span>
       </div>
       <div class="review_buttons">
-        <button id="modal-open">신고하기</button>  
-        <div class="popup-wrap" id="popup">
-          <div class="popup">
+        <button class="modal-open">신고하기</button>  
+        <div class="popup-wrap popup">
+          <div class="popup-class">
             <div class="popup-body">
               <div class="body-content">
                 <div class="body-titlebox">
@@ -103,7 +104,7 @@ const reviewItemTemplate = (name, text, createdAt) => {
                   <p>신고 사유를 선택해주세요.</p>
                 </div>
                 <div class="body-contentbox">
-                  <div id="report_btns">
+                  <div class="report_btns">
                     <button class="report_btn">부적절한 홍보</button>
                     <button class="report_btn">음란성 혹은 청소년에게 부적합한 내용</button>
                     <button class="report_btn">욕설 혹은 비방</button>
@@ -114,8 +115,8 @@ const reviewItemTemplate = (name, text, createdAt) => {
               </div>
             </div>
             <div class="popup-foot">
-              <span class="pop-btn confirm" id="confirm">신고</span>
-              <span class="pop-btn close" id="close">취소</span>
+              <span class="pop-btn confirm">신고</span>
+              <span class="pop-btn close">취소</span>
             </div>
           </div>
         </div>
@@ -155,19 +156,25 @@ function updateYoutube(video) {
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
 
+const newReview = reviewItemTemplate("111", "첫 번째 리뷰", "2020-01-02");
+$reviewList.insertAdjacentHTML("afterbegin", newReview);
+
+const newReview2 = reviewItemTemplate("1112", "첫2 번째 리뷰", "2020-01-02");
+$reviewList.insertAdjacentHTML("afterbegin", newReview2);
+
 /* 신고하기 모달창 */
 $(function () {
-  $("#confirm").click(function () {
+  $(".confirm").click(function () {
     //컨펌 이벤트 처리
     modalClose();
   });
-  $("#modal-open").click(function () {
-    $("#popup").css("display", "flex").hide().fadeIn();
+  $(".modal-open").click(function () {
+    $(".popup").css("display", "flex").hide().fadeIn();
   });
-  $("#close").click(function () {
+  $(".close").click(function () {
     modalClose();
   });
   function modalClose() {
-    $("#popup").fadeOut();
+    $(".popup").fadeOut();
   }
 });
