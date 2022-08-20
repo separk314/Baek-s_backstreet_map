@@ -5,7 +5,7 @@ const $location = document.querySelector(".location");
 const $menu = document.querySelector(".menu");
 
 const $reviewList = document.querySelector("#reviewList");
-const $youtube_btn = document.querySelector("youtube_btn");
+const $youtube_btn = document.querySelector(".youtube_btn");
 const $channel_img = document.querySelector(".channel_img");
 const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
@@ -23,10 +23,35 @@ const dataFetch = async (id) => {
       console.log(serverData);
       fetchYoutubeAPI(serverData.video);
       updateInfo(serverData);
+
+      getVideoLink(serverData)
+        .then(addClick(link))
+        .catch((message) => console.log(message));
     });
   return response;
 };
-dataFetch(18);
+dataFetch(20);
+
+// youtube video link 가져오기
+const getVideoLink = (data) => {
+  return new Promise((resolve, reject) => {
+    if (data["video"]) {
+      resolve(data["video"]);
+    } else {
+      reject("아직 링크가 로드되지 않았음.");
+    }
+  });
+};
+
+// youtube link 연결
+function addClick(videoLink) {
+  console.log("링크 연결");
+  $youtube_btn.addEventListener("click", handleClick(videoLink));
+}
+function handleClick(videoLink) {
+  console.log("clicked");
+  window.open(videoLink);
+}
 
 function updateInfo(data) {
   $rest_name.innerText = data["name"];
@@ -35,9 +60,6 @@ function updateInfo(data) {
   $location.innerText = data["introduce"];
   $menu.innerText = data["menu"];
 }
-
-// youtube link 연결
-// $youtube_btn.addEventListener('click', )
 
 // 리뷰 등록 템플릿(다른 유저)
 const reviewItemTemplate = (name, text, createdAt) => {
