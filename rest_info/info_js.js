@@ -38,12 +38,38 @@ const dataFetch = async (id) => {
             serverData.reviews[i].createdAt.substr(0, 10)
           )
         );
+        console.log(serverData.reviews[i].keyword);
+        // putKeywords(review[i], serverData.reviews[i].keyword);
         $reviewList.insertAdjacentHTML("afterbegin", reviews[i]);
       }
+
+      runModal(); // 신고하기(모달창) 실행
     });
   return response;
 };
 dataFetch(17);
+
+// 키워드 넣기
+function putKeywords(review, keywords) {}
+
+/* 신고하기 모달창 */
+function runModal() {
+  $(function () {
+    $(".confirm").click(function () {
+      //컨펌 이벤트 처리
+      modalClose();
+    });
+    $(".modal-open").click(function () {
+      $(".popup").css("display", "flex").hide().fadeIn();
+    });
+    $(".close").click(function () {
+      modalClose();
+    });
+    function modalClose() {
+      $(".popup").fadeOut();
+    }
+  });
+}
 
 // youtube video link 가져오기
 const getVideoLink = (data) => {
@@ -155,26 +181,3 @@ function updateYoutube(video) {
   $uploader.innerText = video.snippet.channelTitle;
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
-
-const newReview = reviewItemTemplate("111", "첫 번째 리뷰", "2020-01-02");
-$reviewList.insertAdjacentHTML("afterbegin", newReview);
-
-const newReview2 = reviewItemTemplate("1112", "첫2 번째 리뷰", "2020-01-02");
-$reviewList.insertAdjacentHTML("afterbegin", newReview2);
-
-/* 신고하기 모달창 */
-$(function () {
-  $(".confirm").click(function () {
-    //컨펌 이벤트 처리
-    modalClose();
-  });
-  $(".modal-open").click(function () {
-    $(".popup").css("display", "flex").hide().fadeIn();
-  });
-  $(".close").click(function () {
-    modalClose();
-  });
-  function modalClose() {
-    $(".popup").fadeOut();
-  }
-});
