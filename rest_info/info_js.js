@@ -46,18 +46,17 @@ const dataFetch = async (id) => {
   return response;
 };
 
+/*
 const report_click = async (reviewIdx, reason) => {
   var reasonJSON = {
     reportReason: reason,
   };
-  var token = {
-    "x-access-token":
-      "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0.YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu-OfM",
-  };
   var header = {
-    headers: JSON.stringify(token),
+    headers: {
+      "x-access-token":
+        "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo3LCJpYXQiOjE2NjExNzI4OTYsImV4cCI6MTY2MjY0NDEyNX0.d7jzVMx_ArUcp9FswYTAKIZLxCH78oTA54fiiYxPBCw",
+    },
   };
-  console.log(JSON.stringify(token));
   console.log(JSON.stringify(header));
 
   const response = await axios
@@ -73,10 +72,61 @@ const report_click = async (reviewIdx, reason) => {
       console.log(error);
     });
   return response;
+}; 
+
+async function report_click(url, data) {
+  // const token = localStorage.getItem("access_token");
+  let jsonReason = JSON.stringify({
+    reportReason: 3,
+  });
+  console.log(jsonReason, typeof jsonReason);
+
+  const response = await fetch(url, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+      "x-access-token":
+        "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo3LCJpYXQiOjE2NjExNzI4OTYsImV4cCI6MTY2MjY0NDEyNX0.d7jzVMx_ArUcp9FswYTAKIZLxCH78oTA54fiiYxPBCw",
+    },
+    body: jsonReason,
+  });
+  console.log(response);
+}
+report_click("http://localhost:9000/reviews/11", null)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((error) => console.log(error));
+// report_click(11, 3);
+*/
+
+var myHeaders = new Headers();
+myHeaders.append(
+  "x-access-token",
+  "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0.YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu-OfM"
+);
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Cookie", "JSESSIONID=D599D7B5BCC613AE8240024DEDA3C873");
+
+var raw = JSON.stringify({
+  reportReason: 3,
+});
+
+var requestOptions = {
+  method: "POST",
+  mode: "no-cors",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow",
 };
 
+fetch("http://localhost:9000/reviews/11", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
+
 dataFetch(17);
-report_click(11, 3);
 
 // $youtube_btn.addEventListener("click", handleClick(videoLink));
 
