@@ -31,15 +31,16 @@ const dataFetch = async (id) => {
 
       // 리뷰 가져오기
       for (let i = 0; i < serverData.reviews.length; i++) {
+        const strKeyword = putKeywords(serverData.reviews[i].keyword);
+
         reviews.push(
           reviewItemTemplate(
             serverData.reviews[i].name,
             serverData.reviews[i].text,
-            serverData.reviews[i].createdAt.substr(0, 10)
+            serverData.reviews[i].createdAt.substr(0, 10),
+            strKeyword
           )
         );
-        console.log(serverData.reviews[i].keyword);
-        // putKeywords(review[i], serverData.reviews[i].keyword);
         $reviewList.insertAdjacentHTML("afterbegin", reviews[i]);
       }
 
@@ -50,7 +51,78 @@ const dataFetch = async (id) => {
 dataFetch(17);
 
 // 키워드 넣기
-function putKeywords(review, keywords) {}
+function putKeywords(intKeyword) {
+  let strKeyword = "";
+
+  for (let i = 0; i < intKeyword.length; i++) {
+    switch (intKeyword[i]) {
+      case 1:
+        strKeyword += `<button class="recommend">달콤해요</button>\n`;
+        break;
+      case 2:
+        strKeyword += `<button class="recommend">담백해요</button>\n`;
+        break;
+      case 3:
+        strKeyword += `<button class="recommend">느끼해요</button>\n`;
+        break;
+      case 4:
+        strKeyword += `<button class="recommend">자극적이에요</button>\n`;
+        break;
+      case 5:
+        strKeyword += `<button class="recommend">달달해요</button>\n`;
+        break;
+      case 6:
+        strKeyword += `<button class="recommend">혼밥하기 좋아요</button>\n`;
+        break;
+      case 7:
+        strKeyword += `<button class="recommend">친구들과 방문하기 좋아요</button>\n`;
+        break;
+      case 8:
+        strKeyword += `<button class="recommend">가족 외식하기 좋아요</button>\n`;
+        break;
+      case 9:
+        strKeyword += `<button class="recommend">데이트하기 좋아요</button>\n`;
+        break;
+      case 10:
+        strKeyword += `<button class="recommend">단체 모임하기 좋아요</button>\n`;
+        break;
+      case 11:
+        strKeyword += `<button class="recommend">친절해요</button>\n`;
+        break;
+      case 12:
+        strKeyword += `<button class="recommend">청결해요</button>\n`;
+        break;
+      case 13:
+        strKeyword += `<button class="recommend">인테리어가 예뻐요</button>\n`;
+        break;
+      case 14:
+        strKeyword += `<button class="recommend">주차하기 편해요</button>\n`;
+        break;
+      case 15:
+        strKeyword += `<button class="recommend">사진이 잘 나와요</button>\n`;
+        break;
+      case 16:
+        strKeyword += `<button class="recommend">대중교통으로 방문하기 편해요</button>\n`;
+        break;
+      case 17:
+        strKeyword += `<button class="recommend">야외 좌석(테라스)가 있어요</button>\n`;
+        break;
+      case 18:
+        strKeyword += `<button class="recommend">포장 가능해요</button>\n`;
+        break;
+      case 19:
+        strKeyword += `<button class="recommend">가성비가 좋아요</button>\n`;
+        break;
+      case 20:
+        strKeyword += `<button class="recommend">조용해요</button>\n`;
+        break;
+      case 21:
+        strKeyword += `<button class="recommend">애완동물 동반 가능해요</button>\n`;
+        break;
+    }
+  }
+  return strKeyword;
+}
 
 /* 신고하기 모달창 */
 function runModal() {
@@ -101,7 +173,7 @@ function updateInfo(data) {
 }
 
 // 리뷰 등록 템플릿(다른 유저)
-const reviewItemTemplate = (name, text, createdAt) => {
+const reviewItemTemplate = (name, text, createdAt, keywords) => {
   return `
   <div class="review">
   <div class="review_profile">
@@ -151,7 +223,7 @@ const reviewItemTemplate = (name, text, createdAt) => {
   </div>
   <!-- 키워드 -->
   <div class="keywords">
-    <button class="recommend">추천 키워드</button>
+    ${keywords}
   </div>
   <div class="review_body">
     <div class="review_textContainer">
