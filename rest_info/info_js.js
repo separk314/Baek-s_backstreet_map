@@ -25,11 +25,7 @@ const dataFetch = async (id) => {
       fetchYoutubeAPI(serverData.video);
       updateInfo(serverData);
 
-      // getVideoLink(serverData)
-      //   .then(addClick(link))
-      //   .catch((message) => console.log(message));
-
-      // 리뷰 가져오기
+      // 리뷰 1개씩 가져오기
       for (let i = 0; i < serverData.reviews.length; i++) {
         const strKeyword = putKeywords(serverData.reviews[i].keyword);
 
@@ -38,7 +34,8 @@ const dataFetch = async (id) => {
             serverData.reviews[i].name,
             serverData.reviews[i].text,
             serverData.reviews[i].createdAt.substr(0, 10),
-            strKeyword
+            strKeyword,
+            i
           )
         );
         $reviewList.insertAdjacentHTML("afterbegin", reviews[i]);
@@ -48,7 +45,45 @@ const dataFetch = async (id) => {
     });
   return response;
 };
+
+const report_click = async (reviewIdx, reason) => {
+  var reasonJSON = {
+    reportReason: reason,
+  };
+  var token = {
+    "x-access-token":
+      "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0.YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu-OfM",
+  };
+  var header = {
+    headers: JSON.stringify(token),
+  };
+  console.log(JSON.stringify(token));
+  console.log(JSON.stringify(header));
+
+  const response = await axios
+    .post(
+      `http://localhost:9000/reviews/${reviewIdx}`,
+      JSON.stringify(reasonJSON),
+      JSON.stringify(header)
+    )
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  return response;
+};
+
 dataFetch(17);
+report_click(11, 3);
+
+// $youtube_btn.addEventListener("click", handleClick(videoLink));
+
+function handleClick(videoLink) {
+  console.log("clicked");
+  window.open(videoLink);
+}
 
 // 키워드 넣기
 function putKeywords(intKeyword) {
@@ -143,37 +178,21 @@ function runModal() {
   });
 }
 
-// youtube video link 가져오기
-const getVideoLink = (data) => {
-  return new Promise((resolve, reject) => {
-    if (data["video"]) {
-      resolve(data["video"]);
-    } else {
-      reject("아직 링크가 로드되지 않았음.");
-    }
-  });
-};
-
-// youtube link 연결
-function addClick(videoLink) {
-  console.log("링크 연결");
-  $youtube_btn.addEventListener("click", handleClick(videoLink));
-}
-function handleClick(videoLink) {
-  console.log("clicked");
-  window.open(videoLink);
-}
-
+// 가게 정보 업데이트
 function updateInfo(data) {
   $rest_name.innerText = data["name"];
   $like.innerText = `${data["like"]} %`;
-  $dislike.innerText = `${100 - data["like"]} %`;
+  if (data["like"] === 0) {
+    $dislike.innerText = `0 %`;
+  } else {
+    $dislike.innerText = `${100 - data["like"]} %`;
+  }
   $location.innerText = data["introduce"];
   $menu.innerText = data["menu"];
 }
 
 // 리뷰 등록 템플릿(다른 유저)
-const reviewItemTemplate = (name, text, createdAt, keywords) => {
+const reviewItemTemplate = (name, text, createdAt, keywords, idx) => {
   return `
   <div class="review">
   <div class="review_profile">
@@ -192,7 +211,7 @@ const reviewItemTemplate = (name, text, createdAt, keywords) => {
         <span class="review_date">${createdAt}</span>
       </div>
       <div class="review_buttons">
-        <button class="modal-open">신고하기</button>  
+        <button id="reviewBtn${idx}" class="modal-open">신고하기</button>  
         <div class="popup-wrap popup">
           <div class="popup-class">
             <div class="popup-body">
