@@ -226,327 +226,74 @@
         style="width: 1000px; height: 600px; margin-left: 13%"
       ></div>
       <div id="result" style="padding: 3%">
-        <div class="kewrod">
-          <div
-            id="kewrod-result"
-            style="
-              font-size: 13px;
-              color: gray;
-              font-weight: bold;
-              text-align: left;
-            "
-          >
-            키워드로 찾기
-          </div>
-          <div
-            class="eating"
-            style="
-              display: flex;
-              padding-top: 5%;
-              text-align: left;
-              border-color: #b70000;
-            "
-          >
-            <button
-              id="hot"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              매콤
-            </button>
-            <button
-              id="daldal"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              달달
-            </button>
-            <button
-              id="nuki"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              느끼
-            </button>
-            <button
-              id="solo"
-              style="
-                width: 50px;
-                border-radius: 10px;
-                color: #b70000;
-                background-color: white;
-                border-color: gray;
-              "
-            >
-              혼밥
-            </button>
+        <div class="find-by-keyword">
+          <div id="keyword-result">키워드로 찾기</div>
+          <div class="keywords">
+            <div class="keywords_container">
+              <div class="key">
+                <button id="keyword1" class="keyword">달콤해요</button>
+                <button id="keyword2" class="keyword">담백해요</button>
+                <button id="keyword3" class="keyword">느끼해요</button>
+                <button id="keyword4" class="keyword">자극적이에요</button>
+                <button id="keyword5" class="keyword">달달해요</button>
+                <button id="keyword6" class="keyword">혼밥하기 좋아요</button>
+                <button id="keyword7" class="keyword">
+                  친구들과 방문하기 좋아요
+                </button>
+                <button id="keyword8" class="keyword">
+                  가족 외식하기 좋아요
+                </button>
+                <button id="keyword9" class="keyword">데이트하기 좋아요</button>
+                <button id="keyword10" class="keyword">
+                  단체 모임하기 좋아요
+                </button>
+                <button id="keyword11" class="keyword">친절해요</button>
+              </div>
+              <div class="key">
+                <button id="keyword12" class="keyword">청결해요</button>
+                <button id="keyword13" class="keyword">
+                  인테리어가 예뻐요
+                </button>
+                <button id="keyword14" class="keyword">주차하기 편해요</button>
+                <button id="keyword15" class="keyword">사진이 잘 나와요</button>
+                <button id="keyword16" class="keyword">
+                  대중교통으로 방문하기 편해요
+                </button>
+                <button id="keyword17" class="keyword">
+                  야외 좌석(테라스)가 있어요
+                </button>
+                <button id="keyword18" class="keyword">포장 가능해요</button>
+                <button id="keyword19" class="keyword">가성비가 좋아요</button>
+                <button id="keyword20" class="keyword">조용해요</button>
+                <button id="keyword21" class="keyword">
+                  애완동물 동반 가능해요
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="location">
-          <div
-            id="location-result"
-            style="
-              padding-top: 15%;
-              font-size: 13px;
-              color: gray;
-              font-weight: bold;
-              text-align: left;
-            "
-          >
-            위치로 찾기
-          </div>
+        <div class="find-by-location">
+          <div id="location-result">위치로 찾기</div>
           <div class="location_container">
-            <div
-              class="loc1"
-              style="
-                width: 50px;
-                margin-right: 10px;
-                border-radius: 10px;
-                background-color: white;
-                color: #2524ff;
-                border-color: gray;
-                margin-bottom: 5px;
-              "
-            >
-              <button
-                id="seoul"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                서울
-              </button>
-              <button
-                id="keung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경기
-              </button>
-              <button
-                id="incheon"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                인천
-              </button>
-              <button
-                id="busan"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                부산
-              </button>
-              <button
-                id="ulsan"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                대구
-              </button>
-              <button
-                id="kang"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                대전
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                광주
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경남
-              </button>
+            <div class="loc">
+              <button id="seoul" class="loc_btn">서울</button>
+              <button id="keung" class="loc_btn">경기</button>
+              <button id="incheon" class="loc_btn">인천</button>
+              <button id="busan" class="loc_btn">부산</button>
+              <button id="ulsan" class="loc_btn">대구</button>
+              <button id="kang" class="loc_btn">대전</button>
+              <button id="chung" class="loc_btn">광주</button>
+              <button id="chung" class="loc_btn">경남</button>
             </div>
-            <div
-              class="loc2"
-              style="
-                width: 50px;
-                margin-right: 10px;
-                border-radius: 10px;
-                background-color: white;
-                color: #2524ff;
-                border-color: gray;
-                margin-bottom: 5px;
-              "
-            >
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                울산
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                강원
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                충남
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                충북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                전남
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                전북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                제주
-              </button>
+            <div class="loc">
+              <button id="chung" class="loc_btn">경북</button>
+              <button id="chung" class="loc_btn">울산</button>
+              <button id="chung" class="loc_btn">강원</button>
+              <button id="chung" class="loc_btn">충남</button>
+              <button id="chung" class="loc_btn">충북</button>
+              <button id="chung" class="loc_btn">전남</button>
+              <button id="chung" class="loc_btn">전북</button>
+              <button id="chung" class="loc_btn">제주</button>
             </div>
           </div>
         </div>

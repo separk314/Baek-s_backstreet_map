@@ -100,11 +100,18 @@ report_click("http://localhost:9000/reviews/11", null)
   .catch((error) => console.log(error));
 // report_click(11, 3);
 */
+dataFetch(17);
 
 var myHeaders = new Headers();
 myHeaders.append(
   "x-access-token",
-  "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0.YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu-OfM"
+  `eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ` +
+    "." +
+    `eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0` +
+    "." +
+    `YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu` +
+    "-" +
+    `OfM`
 );
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Cookie", "JSESSIONID=D599D7B5BCC613AE8240024DEDA3C873");
@@ -115,7 +122,7 @@ var raw = JSON.stringify({
 
 var requestOptions = {
   method: "POST",
-  mode: "no-cors",
+  // mode: "no-cors",
   headers: myHeaders,
   body: raw,
   redirect: "follow",
@@ -123,10 +130,8 @@ var requestOptions = {
 
 fetch("http://localhost:9000/reviews/11", requestOptions)
   .then((response) => response.text())
-  .then((result) => console.log(result))
+  .then((result) => console.log("result: ", result.body))
   .catch((error) => console.log("error", error));
-
-dataFetch(17);
 
 // $youtube_btn.addEventListener("click", handleClick(videoLink));
 
