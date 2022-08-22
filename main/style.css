@@ -164,13 +164,28 @@ body {
   height: 100%;
 }
 
+/* 지도 */
+.all-map {
+  display: flex;
+  width: 100%;
+  height: 700px;
+}
+#map {
+  width: 1000px;
+  height: 600px;
+  margin-left: 13%;
+}
+#result {
+  padding-left: 3%;
+}
+
 /* 키워드로 찾기 */
 .find-by-keyword {
   width: 260px;
 }
 #keyword-result {
   font-size: 13px;
-  color: gray;
+  color: #9b9b9b;
   font-weight: bold;
   text-align: left;
 }
@@ -197,16 +212,17 @@ body {
   margin-right: 1%;
   border-radius: 10px;
   background-color: white;
-  color: #b70000;
-  border-color: gray;
+  color: #7d1818;
+  border: 1px solid #deb2b2;
   display: inline-block;
+  font-weight: 400;
 }
 
 /* 위치로 찾기 */
 #location-result {
   padding-top: 15%;
   font-size: 13px;
-  color: gray;
+  color: #9b9b9b;
   font-weight: bold;
   text-align: left;
 }
@@ -230,35 +246,18 @@ body {
   margin-right: 10px;
   border-radius: 10px;
   background-color: white;
-  color: #2524ff;
-  border-color: gray;
-}
-
-.search-result-all::-webkit-scrollbar {
-  width: 10px; /* 스크롤바의 너비 */
-}
-
-.search-result-all::-webkit-scrollbar-thumb {
-  height: 10%; /* 스크롤바의 길이 */
-  background: #bdbdbd; /* 스크롤바의 색상 */
-
-  border-radius: 10px;
-}
-
-.search-result-all::-webkit-scrollbar-track {
-  background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+  color: #263053;
+  border: 1px solid #96a5dc;
 }
 
 .location_container::-webkit-scrollbar {
   height: 10px;
 }
-
 .location_container::-webkit-scrollbar-thumb {
   height: 10%; /* 스크롤바의 길이 */
   background: #bdbdbd; /* 스크롤바의 색상 */
   border-radius: 10px;
 }
-
 .location_container::-webkit-scrollbar-track {
   background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
 }
@@ -266,13 +265,71 @@ body {
 .keywords::-webkit-scrollbar {
   height: 10px;
 }
-
 .keywords::-webkit-scrollbar-thumb {
   height: 10%; /* 스크롤바의 길이 */
   background: #bdbdbd; /* 스크롤바의 색상 */
   border-radius: 10px;
 }
-
 .keywords::-webkit-scrollbar-track {
   background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+}
+
+/* 검색하기*/
+.search_btn_container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3%;
+}
+#search_btn {
+  width: 80px;
+  height: 30px;
+  background: #6d6d6d;
+  border-radius: 10px;
+  border-color: white;
+  color: #ffffff;
+}
+.search-result-all::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+.search-result-all::-webkit-scrollbar-thumb {
+  height: 10%; /* 스크롤바의 길이 */
+  background: #bdbdbd; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+.search-result-all::-webkit-scrollbar-track {
+  background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+}
+
+/* 검색 결과 */
+#search-result {
+  padding-top: 15%;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+}
+.search-result {
+  width: 260px;
+  height: 250px;
+  overflow-y: auto;
+  padding-left: 5px;
+}
+.result {
+  width: 220px;
+  height: 50px;
+  display: flex;
+  background: #f6f6f6;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.rest-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.rest-menu {
+  margin-left: auto;
+  font-size: 11px;
 }

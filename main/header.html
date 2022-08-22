@@ -220,12 +220,9 @@
       <div class="scroll2">스크롤 해보세요!</div>
       <div class="zoom">&darr;</div>
     </div>
-    <div class="all-map" style="display: flex; width: 100%; height: 700px">
-      <div
-        id="map"
-        style="width: 1000px; height: 600px; margin-left: 13%"
-      ></div>
-      <div id="result" style="padding: 3%">
+    <div class="all-map">
+      <div id="map"></div>
+      <div id="result">
         <div class="find-by-keyword">
           <div id="keyword-result">키워드로 찾기</div>
           <div class="keywords">
@@ -297,128 +294,16 @@
             </div>
           </div>
         </div>
-        <div
-          id="search-result"
-          style="
-            padding-top: 15%;
-            margin-bottom: 15px;
-            font-size: 13px;
-            color: black;
-            font-weight: bold;
-            text-align: left;
-          "
-        >
-          검색 결과
+        <div class="search_btn_container">
+          <button id="search_btn">검색하기</button>
         </div>
-        <div
-          class="search-result-all"
-          style="
-            width: 260px;
-            height: 250px;
-            overflow-y: scroll;
-            padding-left: 5px;
-          "
-        >
-          <div
-            class="search-result-all1"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method1"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method11"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
+        <div id="search-result">검색 결과</div>
+        <div class="search-result">
+          <div class="result">
+            <div class="rest-name">가게 이름</div>
+            <div class="rest-menu">메뉴</div>
           </div>
-          <div
-            class="search-result-all2"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method2"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method22"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
-          <div
-            class="search-result-all3"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method3"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method33"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
-          <div
-            class="search-result-all4"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method4"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method44"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -457,52 +342,6 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1105caefe8133f02fb02b6090b63c644"
     ></script>
-    <script>
-      var container = document.getElementById("map");
-      var options = {
-        center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-        level: 3,
-      };
-
-      var map = new kakao.maps.Map(container, options);
-
-      var positions = [
-        {
-          title: "미식본좌",
-          latlng: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-        },
-        {
-          title: "생태연못",
-          latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-        },
-        {
-          title: "텃밭",
-          latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-        },
-        {
-          title: "근린공원",
-          latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-        },
-      ];
-
-      var imageSrc =
-        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-      for (var i = 0; i < positions.length; i++) {
-        // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new kakao.maps.Size(24, 35);
-
-        // 마커 이미지를 생성합니다
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          map: map, // 마커를 표시할 지도
-          position: positions[i].latlng, // 마커를 표시할 위치
-          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          image: markerImage, // 마커 이미지
-        });
-      }
-    </script>
+    <script src="./map.js"></script>
   </body>
 </html>
