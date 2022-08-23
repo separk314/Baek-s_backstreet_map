@@ -122,7 +122,7 @@ var raw = JSON.stringify({
 
 var requestOptions = {
   method: "POST",
-  // mode: "no-cors",
+  mode: "no-cors",
   headers: myHeaders,
   body: raw,
   redirect: "follow",

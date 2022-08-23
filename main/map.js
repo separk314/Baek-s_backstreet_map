@@ -3,8 +3,44 @@ var options = {
   center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
   level: 3,
 };
-
 var map = new kakao.maps.Map(container, options);
+
+// keyword, location 선택하기
+var $key_btns = document.querySelectorAll(".keyword");
+var $loc_btns = document.querySelectorAll(".loc_btn");
+var key_val = [];
+var loc_val = 0;
+[].forEach.call($key_btns, function (key_btn) {
+  key_btn.addEventListener("click", key_click);
+});
+[].forEach.call($loc_btns, function (loc_btn) {
+  loc_btn.addEventListener("click", loc_click);
+});
+
+function key_click(e) {
+  const clicked_val = e.target.getAttribute("id");
+
+  if (key_val.includes(clicked_val)) {
+    // 이미 클릭한 키워드의 경우 배열에서 삭제
+    for (var i = 0; i < key_val.length; i++) {
+      if (key_val[i] === clicked_val) {
+        key_val.splice(i, 1);
+        break;
+      }
+    }
+    document.getElementById(clicked_val).style.background = "white";
+    document.getElementById(clicked_val).style.color = "#7D1818";
+  } else {
+    key_val.push(clicked_val);
+    document.getElementById(clicked_val).style.background = "#C78080";
+    document.getElementById(clicked_val).style.color = "white";
+  }
+  console.log("clicked:", key_val);
+}
+function loc_click(e) {
+  loc_val = e.target.getAttribute("id");
+  console.log("clicked:", loc_val);
+}
 
 var positions = [
   {
