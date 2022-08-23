@@ -1,3 +1,21 @@
+// 임시 데이터
+const temp = {
+  item: [
+    {
+      storeIdx: 24,
+      name: "연돈",
+      latitude: 33.24731,
+      longitude: 126.40814,
+    },
+    {
+      storeIdx: 32,
+      name: "이대 라멘집",
+      latitude: 33.54011,
+      longitude: 125.98219,
+    },
+  ],
+};
+
 var container = document.getElementById("map");
 var options = {
   center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
@@ -38,6 +56,7 @@ function key_click(e) {
   }
 }
 function loc_click(e) {
+  console.log(e.target.getAttribute("id"));
   if (e.target.classList[1] === "loc_clicked") {
     e.target.classList.remove("loc_clicked");
     loc_val = 0;
@@ -60,7 +79,103 @@ function search_click(e) {
   } else if (loc_val === 0) {
     alert("위치를 선택해주세요.");
   } else {
+    moveLocMap(loc_val); // 선택한 위치로 이동
+    let boundsStr = map.getBounds().toString(); // ((남,서), (북,동))
+
+    console.log(temp);
+    for (let i = 0; i < temp.item.length; i++) {
+      getRestInfo(temp.item[i].storeIdx);
+    }
   }
+}
+
+const getRestInfo = async (idx) => {
+  const response = await axios
+    .get(`http://localhost:9000/stores/${idx}`)
+    .then((data) => {
+      console.log(data);
+    });
+};
+
+const getRestList = async (co1, co2, co3, co4) => {
+  // co1: 북동, cor2: 북서, cor3: 남서, cor4:
+  const response = await axios
+    .get(`http://localhost:9000/stores`)
+    .then()
+    .catch();
+  return response;
+};
+
+function moveLocMap(location) {
+  var moveLatLon = null;
+  switch (location) {
+    case "seoul":
+      moveLatLon = new kakao.maps.LatLng(37.56667, 126.97806);
+      map.setLevel(9);
+      break;
+    case "gyeonggi":
+      moveLatLon = new kakao.maps.LatLng(37.52321, 126.9937);
+      map.setLevel(10);
+      break;
+    case "incheon":
+      moveLatLon = new kakao.maps.LatLng(37.45639, 126.70528);
+      map.setLevel(9);
+      break;
+    case "busan":
+      moveLatLon = new kakao.maps.LatLng(35.17944, 129.07556);
+      map.setLevel(9);
+      break;
+    case "daegu":
+      moveLatLon = new kakao.maps.LatLng(35.87125, 128.60074);
+      map.setLevel(8);
+      break;
+    case "daejeon":
+      moveLatLon = new kakao.maps.LatLng(36.35014, 127.38416);
+      map.setLevel(8);
+      break;
+    case "gwangju":
+      moveLatLon = new kakao.maps.LatLng(35.1597, 126.85097);
+      map.setLevel(7);
+      break;
+    case "gyeongnam":
+      moveLatLon = new kakao.maps.LatLng(35.23711, 128.69016);
+      map.setLevel(11);
+      break;
+    case "gyeongbuk":
+      moveLatLon = new kakao.maps.LatLng(36.57193, 128.49967);
+      map.setLevel(11);
+      break;
+    case "ulsan":
+      moveLatLon = new kakao.maps.LatLng(35.5392, 129.31093);
+      map.setLevel(7);
+      break;
+    case "gangwon":
+      moveLatLon = new kakao.maps.LatLng(37.77022, 128.29494);
+      map.setLevel(11);
+      break;
+    case "chungnam":
+      moveLatLon = new kakao.maps.LatLng(36.56966, 126.84156);
+      map.setLevel(10);
+      break;
+    case "chungbuk":
+      moveLatLon = new kakao.maps.LatLng(36.76114, 127.7815);
+      map.setLevel(10);
+      break;
+    case "jeonnam":
+      moveLatLon = new kakao.maps.LatLng(34.89156, 126.95489);
+      map.setLevel(10);
+      break;
+    case "jeonbuk":
+      moveLatLon = new kakao.maps.LatLng(35.81951, 127.10724);
+      map.setLevel(10);
+      break;
+    case "jeju":
+      moveLatLon = new kakao.maps.LatLng(33.36861, 126.52647);
+      map.setLevel(10);
+      break;
+  }
+
+  map.panTo(moveLatLon);
 }
 
 var positions = [

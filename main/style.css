@@ -282,7 +282,7 @@ body {
 .search_btn_container {
   display: flex;
   justify-content: flex-end;
-  padding-top: 3%;
+  padding-top: 7%;
 }
 #search_btn {
   width: 80px;
