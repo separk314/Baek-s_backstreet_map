@@ -7,15 +7,16 @@ var map = new kakao.maps.Map(container, options);
 
 // keyword, location 선택하기
 var $key_btns = document.querySelectorAll(".keyword");
-var $loc_btns = document.querySelectorAll(".loc_btn");
+var $loc_btns = document.getElementsByClassName("loc_btn");
 var key_val = [];
 var loc_val = 0;
+// eventHandler 추가
 [].forEach.call($key_btns, function (key_btn) {
   key_btn.addEventListener("click", key_click);
 });
-[].forEach.call($loc_btns, function (loc_btn) {
-  loc_btn.addEventListener("click", loc_click);
-});
+for (var i = 0; i < $loc_btns.length; i++) {
+  $loc_btns[i].addEventListener("click", loc_click);
+}
 
 function key_click(e) {
   const clicked_val = e.target.getAttribute("id");
@@ -35,11 +36,31 @@ function key_click(e) {
     document.getElementById(clicked_val).style.background = "#C78080";
     document.getElementById(clicked_val).style.color = "white";
   }
-  console.log("clicked:", key_val);
 }
 function loc_click(e) {
+  if (e.target.classList[1] === "loc_clicked") {
+    e.target.classList.remove("loc_clicked");
+    loc_val = 0;
+  } else {
+    for (var i = 0; i < $loc_btns.length; i++) {
+      $loc_btns[i].classList.remove("loc_clicked");
+    }
+    e.target.classList.add("loc_clicked");
+  }
+
   loc_val = e.target.getAttribute("id");
-  console.log("clicked:", loc_val);
+}
+
+var $search_btn = document.getElementById("search_btn");
+$search_btn.addEventListener("click", search_click);
+
+function search_click(e) {
+  if (key_val.length === 0) {
+    alert("키워드를 1개 이상 선택해주세요.");
+  } else if (loc_val === 0) {
+    alert("위치를 선택해주세요.");
+  } else {
+  }
 }
 
 var positions = [

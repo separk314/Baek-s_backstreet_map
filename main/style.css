@@ -249,6 +249,10 @@ body {
   color: #263053;
   border: 1px solid #96a5dc;
 }
+.loc_clicked {
+  color: #ffffff;
+  background: #8192d1;
+}
 
 .location_container::-webkit-scrollbar {
   height: 10px;
