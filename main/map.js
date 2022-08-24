@@ -4,14 +4,14 @@ const temp = {
     {
       storeIdx: 24,
       name: "연돈",
-      latitude: 33.24731,
-      longitude: 126.40814,
+      latitude: 37.5578623,
+      longitude: 126.9459631,
     },
     {
       storeIdx: 32,
       name: "이대 라멘집",
-      latitude: 33.54011,
-      longitude: 125.98219,
+      latitude: 37.5608335,
+      longitude: 126.9963719,
     },
   ],
 };
@@ -19,9 +19,11 @@ const temp = {
 var container = document.getElementById("map");
 var options = {
   center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-  level: 3,
+  level: 8,
 };
 var map = new kakao.maps.Map(container, options);
+
+var positions = []; // map marks
 
 // keyword, location 선택하기
 var $key_btns = document.querySelectorAll(".keyword");
@@ -70,10 +72,11 @@ function loc_click(e) {
   loc_val = e.target.getAttribute("id");
 }
 
+// 검색하기 버튼
 var $search_btn = document.getElementById("search_btn");
 $search_btn.addEventListener("click", search_click);
 
-function search_click(e) {
+function search_click() {
   if (key_val.length === 0) {
     alert("키워드를 1개 이상 선택해주세요.");
   } else if (loc_val === 0) {
@@ -82,19 +85,41 @@ function search_click(e) {
     moveLocMap(loc_val); // 선택한 위치로 이동
     let boundsStr = map.getBounds().toString(); // ((남,서), (북,동))
 
-    console.log(temp);
+    // 음식점 정보 가져오기
     for (let i = 0; i < temp.item.length; i++) {
-      getRestInfo(temp.item[i].storeIdx);
+      getRestInfo(temp.item[i].storeIdx, i, temp);
     }
   }
 }
 
-const getRestInfo = async (idx) => {
+function makeMark(latitude, longitude) {
+  var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+
+  // 마커를 생성합니다
+  var marker = new kakao.maps.Marker({
+    position: markerPosition,
+  });
+
+  // 마커가 지도 위에 표시되도록 설정합니다
+  marker.setMap(map);
+}
+
+const getRestInfo = async (idx, i, restList) => {
   const response = await axios
     .get(`http://localhost:9000/stores/${idx}`)
     .then((data) => {
-      console.log(data);
+      const rest = {
+        title: data.data.name,
+        latlng: new kakao.maps.LatLng(
+          restList.item[i].latitude,
+          restList.item[i].longitude
+        ),
+      };
+      positions.push(rest);
+      makeMark(restList.item[i].latitude, restList.item[i].longitude); // 지도에 마크 표시
     });
+
+  return response;
 };
 
 const getRestList = async (co1, co2, co3, co4) => {
@@ -176,42 +201,4 @@ function moveLocMap(location) {
   }
 
   map.panTo(moveLatLon);
-}
-
-var positions = [
-  {
-    title: "미식본좌",
-    latlng: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-  },
-  {
-    title: "생태연못",
-    latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-  },
-  {
-    title: "텃밭",
-    latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-  },
-  {
-    title: "근린공원",
-    latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-  },
-];
-
-var imageSrc =
-  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-for (var i = 0; i < positions.length; i++) {
-  // 마커 이미지의 이미지 크기 입니다
-  var imageSize = new kakao.maps.Size(24, 35);
-
-  // 마커 이미지를 생성합니다
-  var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-  // 마커를 생성합니다
-  var marker = new kakao.maps.Marker({
-    map: map, // 마커를 표시할 지도
-    position: positions[i].latlng, // 마커를 표시할 위치
-    title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-    image: markerImage, // 마커 이미지
-  });
 }
