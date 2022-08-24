@@ -5,7 +5,7 @@ body {
   margin: 0;
   text-align: center;
   height: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 *,
 *:before,
@@ -171,6 +171,10 @@ input {
 #preference .prefer_container {
   display: flex;
   justify-content: space-evenly;
+  margin: 10px;
+}
+.percent {
+  width: 50px;
 }
 .prefer_container .like_svg,
 .dislike_svg {
@@ -426,7 +430,6 @@ input {
   width: 190px;
   height: 190px;
   margin-right: 20px;
-  overflow: hidden;
   padding-left: 190px;
   float: left;
 }

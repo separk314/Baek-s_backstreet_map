@@ -1,0 +1,32 @@
+.infoWindow {
+  width: 325px;
+  height: 216px;
+  border-radius: 10px;
+}
+
+.infoWindow .info_header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.info_header .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.like_dislike span {
+  font-size: 12px;
+}
+.svg {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+
+.infoWindow .info_body {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.infoWindow .info_body div {
+  font-weight: 400;
+}

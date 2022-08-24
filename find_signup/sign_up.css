@@ -43,13 +43,19 @@ section{
     position:relative;
     display: flex;
 }
+form{
+    width: 100%;
+    background-color: #fff;
+    position:relative;
+    display: flex;
+}
 .left{
     width: 35%;
 }
 .sign-up-title{
     margin-left: 30%;
     margin-top: 10%;
-    font-size: 20px;
+    font-size: 27px;
     font-weight: bold;
 }
 .middle{
@@ -67,11 +73,11 @@ section{
     margin-bottom: 2.3em;
 }
 .form-2{
-    margin-bottom: 1.7em;
+    margin-bottom: 2.5em;
 }
 .form-label {
     color: #000;
-    font-size: 12px;
+    font-size: 17px;
 }
 .form-input {
     color: #ACACAC;
@@ -82,7 +88,7 @@ section{
     border-bottom: 0.3px solid rgba(0,0,0,.3);
     transition: all 300ms;
     margin-right: .6em;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.5em;
 }
 .form-summit{
     border: none;
@@ -92,13 +98,19 @@ section{
     padding: 3px 4px;
     border-radius: 8px;
     font-size: 10px;
-    width: 53px;
-    height: 20px;
+    width: 55px;
+    height: 21px;
 }
 .form-text{
-    color: #000;
-    font-size: 10px;
+    color: #6D6D6D;
+    font-size: 11px;
     margin-bottom: 0.5em;
+}
+.alert-text{
+    color: #C82626;
+    font-size: 11px;
+    margin-bottom: 0.5em;
+    /* display: none; */
 }
 .right{
     width: 35%;
@@ -111,8 +123,9 @@ section{
     padding: 3px 4px;
     border-radius: 9px;
     font-size: 14px;
-    width: 75px;
-    height: 27px;
-    margin-top: 500px;
+    width: 120px;
+    height: 35px;
+    margin-top: 570px;
     margin-left: 55%;
+    font-size: 17px;
 }

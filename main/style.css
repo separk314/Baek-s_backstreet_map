@@ -70,7 +70,7 @@ body {
 .descript {
   position: absolute;
   top: 200px;
-  width: 380px;
+  width: 420px;
   font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -292,16 +292,16 @@ body {
   border-color: white;
   color: #ffffff;
 }
-.search-result-all::-webkit-scrollbar {
+.search-result::-webkit-scrollbar {
   width: 10px; /* 스크롤바의 너비 */
 }
-.search-result-all::-webkit-scrollbar-thumb {
+.search-result::-webkit-scrollbar-thumb {
   height: 10%; /* 스크롤바의 길이 */
   background: #bdbdbd; /* 스크롤바의 색상 */
 
   border-radius: 10px;
 }
-.search-result-all::-webkit-scrollbar-track {
+.search-result::-webkit-scrollbar-track {
   background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
 }
 
@@ -365,6 +365,11 @@ body {
 .like_dislike span {
   font-size: 12px;
   margin: 2px;
+}
+.svg {
+  display: inline-block;
+  width: 14.25px;
+  height: 13.98px;
 }
 
 .infoWindow .info_body {
