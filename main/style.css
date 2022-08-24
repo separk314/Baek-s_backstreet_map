@@ -337,3 +337,45 @@ body {
   margin-left: auto;
   font-size: 11px;
 }
+
+/* infoWindow */
+.infoWindow {
+  width: 325px;
+  height: 216px;
+  border-radius: 10px;
+  border-color: red;
+}
+.infoWindow hr {
+  margin: 10px;
+}
+
+.infoWindow .info_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 10px;
+}
+.info_header .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.like_dislike span {
+  font-size: 12px;
+  margin: 2px;
+}
+
+.infoWindow .info_body {
+  margin: 10px;
+}
+.infoWindow .info_body div {
+  margin: 8px;
+  font-size: 16px;
+}
+
+.recommend {
+  margin-right: 4%;
+  border-radius: 10px;
+  border-style: none;
+  background: #efefef;
+  color: #000000;
+}

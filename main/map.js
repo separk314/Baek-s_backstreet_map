@@ -23,6 +23,8 @@ var options = {
 };
 var map = new kakao.maps.Map(container, options);
 const $result_list = document.getElementById("result-list"); // 검색 결과
+const rest_elements = []; // $result_list에 추가한 식당 정보들
+var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 }); // mouseover 했을 때 표시되는 window(가게 정보화면)
 
 var positions = []; // 위치 정보 리스트
 var markers = []; // 지도 마커 리스트
@@ -155,13 +157,18 @@ const getRestInfo = async (idx, i, restList) => {
       makeMark(rest); // 지도에 마크 표시
       console.log(data.data);
 
-      //   검색결과 출력
+      rest_elements.push(restTemplate(data.data.name, data.data.bestMenu));
+      //   검색결과 리스트에 출력
       $result_list.insertAdjacentHTML(
         "afterbegin",
-        restTemplate(data.data.name, data.data.bestMenu)
+        rest_elements[rest_elements.length - 1]
       );
 
-      infoWindow(markers[i], data.data.name);
+      infoWindow(
+        markers[i],
+        data.data,
+        rest_elements[rest_elements.length - 1]
+      );
     });
 
   return response;
@@ -170,28 +177,155 @@ const getRestInfo = async (idx, i, restList) => {
 // 마커와 검색결과 항목에 mouseover 했을때
 // 해당 장소에 인포윈도우에 장소명을 표시합니다
 // mouseout 했을 때는 인포윈도우를 닫습니다
-function infoWindow(marker, title) {
+function infoWindow(marker, data, rest_element) {
+  const itemEl = rest_element;
+  console.log(itemEl);
+
   kakao.maps.event.addListener(marker, "mouseover", function () {
-    displayInfowindow(marker, title);
+    displayInfowindow(marker, data);
   });
 
   kakao.maps.event.addListener(marker, "mouseout", function () {
     infowindow.close();
   });
 
-  //   itemEl.onmouseover = function () {
-  //     displayInfowindow(marker, title);
-  //   };
+  itemEl.onmouseover = function () {
+    displayInfowindow(marker, data);
+  };
 
-  //   itemEl.onmouseout = function () {
-  //     infowindow.close();
-  //   };
+  itemEl.onmouseout = function () {
+    infowindow.close();
+  };
 }
-var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(marker, title) {
-  var content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+function displayInfowindow(marker, data) {
+  console.log("data: ", data);
+
+  let changed_text = "";
+  if (data.change === 1) {
+    changed_text = "방송 이후에도 여전히 맛있어요!";
+  } else if (data.$change === 2) {
+    changed_text = "맛과 퀄리티가 보통이에요";
+  } else if (data.$change === 3) {
+    changed_text = "맛과 퀄리티가 별로예요";
+  }
+
+  const keywords_text = [];
+  for (let i = 0; i < 3; i++) {
+    switch (data.keyword[i]) {
+      case 1:
+        keywords_text.push(`<button class="recommend">달콤해요</button>\n`);
+        break;
+      case 2:
+        keywords_text.push(`<button class="recommend">담백해요</button>\n`);
+        break;
+      case 3:
+        keywords_text.push(`<button class="recommend">느끼해요</button>\n`);
+        break;
+      case 4:
+        keywords_text.push(`<button class="recommend">자극적이에요</button>\n`);
+        break;
+      case 5:
+        keywords_text.push(`<button class="recommend">달달해요</button>\n`);
+        break;
+      case 6:
+        keywords_text.push(
+          `<button class="recommend">혼밥하기 좋아요</button>\n`
+        );
+        break;
+      case 7:
+        keywords_text.push(
+          `<button class="recommend">친구들과 방문하기 좋아요</button>\n`
+        );
+        break;
+      case 8:
+        keywords_text.push(
+          `<button class="recommend">가족 외식하기 좋아요</button>\n`
+        );
+        break;
+      case 9:
+        keywords_text.push(
+          `<button class="recommend">데이트하기 좋아요</button>\n`
+        );
+        break;
+      case 10:
+        keywords_text.push(
+          `<button class="recommend">단체 모임하기 좋아요</button>\n`
+        );
+        break;
+      case 11:
+        keywords_text.push(`<button class="recommend">친절해요</button>\n`);
+        break;
+      case 12:
+        keywords_text.push(`<button class="recommend">청결해요</button>\n`);
+        break;
+      case 13:
+        keywords_text.push(
+          `<button class="recommend">인테리어가 예뻐요</button>\n`
+        );
+        break;
+      case 14:
+        keywords_text.push(
+          `<button class="recommend">주차하기 편해요</button>\n`
+        );
+        break;
+      case 15:
+        keywords_text.push(
+          `<button class="recommend">사진이 잘 나와요</button>\n`
+        );
+        break;
+      case 16:
+        keywords_text.push(
+          `<button class="recommend">대중교통으로 방문하기 편해요</button>\n`
+        );
+        break;
+      case 17:
+        keywords_text.push(
+          `<button class="recommend">야외 좌석(테라스)가 있어요</button>\n`
+        );
+        break;
+      case 18:
+        keywords_text.push(
+          `<button class="recommend">포장 가능해요</button>\n`
+        );
+        break;
+      case 19:
+        keywords_text.push(
+          `<button class="recommend">가성비가 좋아요</button>\n`
+        );
+        break;
+      case 20:
+        keywords_text.push(`<button class="recommend">조용해요</button>\n`);
+        break;
+      case 21:
+        keywords_text.push(
+          `<button class="recommend">애완동물 동반 가능해요</button>\n`
+        );
+        break;
+      default:
+        keywords_text.push("");
+    }
+  }
+  var content = `<div class="infoWindow">
+  <div class="info_header">
+    <span class="title">${data.name}</span>
+    <span class="like_dislike">
+      <span class="like">${data.like} %</span>
+      <span class="dislike">${data.like === 0 ? 0 : 100 - data.like}%</span>
+    </span>
+  </div>
+  <hr />
+  <div class="info_body">
+    <div class="changed">${changed_text}</div>
+    <div class="bestMenu">가장 인기 있는 메뉴는 ${data.bestMenu}입니다.</div>
+    <div class="keywords_list">
+        <span>키워드: </span>${keywords_text[0]} ${keywords_text[1]} ${
+    keywords_text[2]
+  }</div>
+  </div>
+</div>`;
 
   infowindow.setContent(content);
   infowindow.open(map, marker);
