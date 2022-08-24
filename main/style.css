@@ -353,7 +353,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .info_header .title {
   font-size: 20px;
@@ -366,6 +369,7 @@ body {
 
 .infoWindow .info_body {
   margin: 10px;
+  margin-top: 20px;
 }
 .infoWindow .info_body div {
   margin: 8px;
@@ -378,4 +382,19 @@ body {
   border-style: none;
   background: #efefef;
   color: #000000;
+}
+
+#viewBtn_container {
+  margin-top: 25px;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+#viewBtn {
+  border: 0;
+  outline: 0;
+  background-color: white;
+}
+#viewBtn:hover {
+  background-color: lightgray;
 }

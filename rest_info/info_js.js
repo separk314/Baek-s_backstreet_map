@@ -100,7 +100,7 @@ report_click("http://localhost:9000/reviews/11", null)
   .catch((error) => console.log(error));
 // report_click(11, 3);
 */
-dataFetch(17);
+dataFetch(localStorage.getItem("local_storeIdx"));
 
 var myHeaders = new Headers();
 myHeaders.append(

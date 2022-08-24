@@ -1,5 +1,5 @@
 // 임시 데이터
-const temp = {
+let temp = {
   item: [
     {
       storeIdx: 24,
@@ -24,7 +24,7 @@ var options = {
 var map = new kakao.maps.Map(container, options);
 const $result_list = document.getElementById("result-list"); // 검색 결과
 const rest_elements = []; // $result_list에 추가한 식당 정보들
-var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 }); // mouseover 했을 때 표시되는 window(가게 정보화면)
+var infowindow = null; // mouseover 했을 때 표시되는 window(가게 정보화면)
 
 var positions = []; // 위치 정보 리스트
 var markers = []; // 지도 마커 리스트
@@ -91,11 +91,9 @@ function search_click() {
 
     moveLocMap(loc_val); // 선택한 위치로 이동
     let boundsStr = map.getBounds().toString(); // ((남,서), (북,동))
-
-    // 음식점 정보 가져오기
-    for (let i = 0; i < temp.item.length; i++) {
-      getRestInfo(temp.item[i].storeIdx, i, temp);
-    }
+    let coor_list = boundsStr.split(/[(,)]/);
+    console.log("boundsStr", coor_list);
+    temp = getRestList(coor_list[2], coor_list[6], coor_list[3], coor_list[7]);
   }
 }
 
@@ -126,6 +124,7 @@ function makeMark(position) {
     position: position.latlng, // 마커를 표시할 위치
     // title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
     image: markerImage, // 마커 이미지
+    clickable: true,
   });
 
   // marker.setMap(map); // 지도 위에 마커 표출
@@ -142,14 +141,15 @@ const restTemplate = (name, menu) => {
 };
 
 const getRestInfo = async (idx, i, restList) => {
+  console.log(idx, i, restList);
   const response = await axios
     .get(`http://localhost:9000/stores/${idx}`)
     .then((data) => {
       const rest = {
         title: data.data.name,
         latlng: new kakao.maps.LatLng(
-          restList.item[i].latitude,
-          restList.item[i].longitude
+          restList.data[i].latitude,
+          restList.data[i].longitude
         ),
       };
 
@@ -164,7 +164,7 @@ const getRestInfo = async (idx, i, restList) => {
         rest_elements[rest_elements.length - 1]
       );
 
-      infoWindow(
+      makeInfoWindow(
         markers[i],
         data.data,
         rest_elements[rest_elements.length - 1]
@@ -177,17 +177,18 @@ const getRestInfo = async (idx, i, restList) => {
 // 마커와 검색결과 항목에 mouseover 했을때
 // 해당 장소에 인포윈도우에 장소명을 표시합니다
 // mouseout 했을 때는 인포윈도우를 닫습니다
-function infoWindow(marker, data, rest_element) {
+function makeInfoWindow(marker, data, rest_element) {
   const itemEl = rest_element;
-  console.log(itemEl);
 
-  kakao.maps.event.addListener(marker, "mouseover", function () {
+  kakao.maps.event.addListener(marker, "click", function () {
+    console.log(itemEl);
+    console.log("clicked");
     displayInfowindow(marker, data);
   });
 
-  kakao.maps.event.addListener(marker, "mouseout", function () {
-    infowindow.close();
-  });
+  //   kakao.maps.event.addListener(marker, "click", function () {
+  //     infowindow.close();
+  //   });
 
   itemEl.onmouseover = function () {
     displayInfowindow(marker, data);
@@ -308,7 +309,7 @@ function displayInfowindow(marker, data) {
         keywords_text.push("");
     }
   }
-  var content = `<div class="infoWindow">
+  var content_html = `<div class="infoWindow">
   <div class="info_header">
     <span class="title">${data.name}</span>
     <span class="like_dislike">
@@ -325,18 +326,45 @@ function displayInfowindow(marker, data) {
     keywords_text[2]
   }</div>
   </div>
+  <div id="viewBtn_container">
+    <button id="viewBtn"}>더보기</button>
+  </div>
 </div>`;
 
-  infowindow.setContent(content);
+  infowindow = new kakao.maps.InfoWindow({
+    content: content_html,
+    removable: true,
+  });
   infowindow.open(map, marker);
+  console.log(marker);
+
+  $viewBtn = document.getElementById("viewBtn");
+  $viewBtn.addEventListener("click", function (event) {
+    localStorage.setItem("local_storeIdx", data.storeIdx);
+    window.open("../rest_info/info.html");
+  });
 }
 
-const getRestList = async (co1, co2, co3, co4) => {
-  // co1: 북동, cor2: 북서, cor3: 남서, cor4:
+const getRestList = async (lat1, lat2, long1, long2) => {
   const response = await axios
-    .get(`http://localhost:9000/stores`)
-    .then()
-    .catch();
+    .get(
+      `http://localhost:9000/stores?latitudes=${lat1},${lat2}&longitudes=${long1}, ${long2}`
+    )
+    .then((data) => {
+      console.log("바운더리 식당 조회 성공:", data);
+      temp = data;
+      return temp;
+    })
+    .then((response) => {
+      // 음식점 정보 가져오기
+      for (let i = 0; i < response.data.length; i++) {
+        console.log("음식점 정보 가져오기:", response.data[i]);
+        getRestInfo(response.data[i].storeIdx, i, response);
+      }
+    })
+    .catch((error) => {
+      console.log("fetchData error: ", error);
+    });
   return response;
 };
 
