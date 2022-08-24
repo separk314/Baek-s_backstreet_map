@@ -42,64 +42,11 @@ const dataFetch = async (id) => {
       }
 
       runModal(); // 신고하기(모달창) 실행
+      $youtube_btn.addEventListener("click", handleClick(serverData.video));
     });
   return response;
 };
 
-/*
-const report_click = async (reviewIdx, reason) => {
-  var reasonJSON = {
-    reportReason: reason,
-  };
-  var header = {
-    headers: {
-      "x-access-token":
-        "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo3LCJpYXQiOjE2NjExNzI4OTYsImV4cCI6MTY2MjY0NDEyNX0.d7jzVMx_ArUcp9FswYTAKIZLxCH78oTA54fiiYxPBCw",
-    },
-  };
-  console.log(JSON.stringify(header));
-
-  const response = await axios
-    .post(
-      `http://localhost:9000/reviews/${reviewIdx}`,
-      JSON.stringify(reasonJSON),
-      JSON.stringify(header)
-    )
-    .then(function (res) {
-      console.log(res);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  return response;
-}; 
-
-async function report_click(url, data) {
-  // const token = localStorage.getItem("access_token");
-  let jsonReason = JSON.stringify({
-    reportReason: 3,
-  });
-  console.log(jsonReason, typeof jsonReason);
-
-  const response = await fetch(url, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-      "x-access-token":
-        "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo3LCJpYXQiOjE2NjExNzI4OTYsImV4cCI6MTY2MjY0NDEyNX0.d7jzVMx_ArUcp9FswYTAKIZLxCH78oTA54fiiYxPBCw",
-    },
-    body: jsonReason,
-  });
-  console.log(response);
-}
-report_click("http://localhost:9000/reviews/11", null)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((error) => console.log(error));
-// report_click(11, 3);
-*/
 dataFetch(localStorage.getItem("local_storeIdx"));
 
 var myHeaders = new Headers();
@@ -132,8 +79,6 @@ fetch("http://localhost:9000/reviews/11", requestOptions)
   .then((response) => response.text())
   .then((result) => console.log("result: ", result.body))
   .catch((error) => console.log("error", error));
-
-// $youtube_btn.addEventListener("click", handleClick(videoLink));
 
 function handleClick(videoLink) {
   console.log("clicked");
@@ -316,7 +261,9 @@ function fetchYoutubeAPI(youtubeURL) {
     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&regionCode=KR&key=${API_KEY}`
   )
     .then((response) => response.json())
-    .then((result) => updateYoutube(result.items[0]))
+    .then((result) => {
+      updateYoutube(result.items[0]);
+    })
     .catch((error) => console.log(error));
 }
 

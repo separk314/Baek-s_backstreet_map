@@ -1,26 +1,5 @@
 // 임시 데이터
-let temp = {
-  item: [
-    {
-      storeIdx: 24,
-      name: "연돈",
-      latitude: 37.5578623,
-      longitude: 126.9459631,
-    },
-    {
-      storeIdx: 32,
-      name: "이대 라멘집",
-      latitude: 37.5608335,
-      longitude: 126.9963719,
-    },
-  ],
-};
-
-document.body.click(function (e) {
-  if (!$(e.target).hasClass("infoWindow")) {
-    console.log("레이어팝업 외의 영역입니다");
-  }
-});
+let temp = {};
 
 var container = document.getElementById("map");
 var options = {
@@ -98,7 +77,6 @@ function search_click() {
     moveLocMap(loc_val); // 선택한 위치로 이동
     let boundsStr = map.getBounds().toString(); // ((남,서), (북,동))
     let coor_list = boundsStr.split(/[(,)]/);
-    console.log("boundsStr", coor_list);
     temp = getRestList(coor_list[2], coor_list[6], coor_list[3], coor_list[7]);
   }
 }
@@ -118,23 +96,26 @@ function removeAllChildNods(list) {
   }
 }
 
-function makeMark(position) {
+async function makeMark(position) {
   var imageSrc =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
   var imageSize = new kakao.maps.Size(24, 35); // 마커 이미지의 이미지 크기 입니다
   var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); // 마커 이미지를 생성합니다
 
-  // 마커를 생성
-  var marker = new kakao.maps.Marker({
-    map: map, // 마커를 표시할 지도
-    position: position.latlng, // 마커를 표시할 위치
-    // title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
-    image: markerImage, // 마커 이미지
-    clickable: true,
-  });
+  return new Promise((resolve, reject) => {
+    // 마커를 생성
+    var marker = new kakao.maps.Marker({
+      map: map, // 마커를 표시할 지도
+      position: position.latlng, // 마커를 표시할 위치
+      // title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
+      image: markerImage, // 마커 이미지
+      clickable: true,
+    });
 
-  // marker.setMap(map); // 지도 위에 마커 표출
-  markers.push(marker); // 마크 리스트에 추가
+    // marker.setMap(map); // 지도 위에 마커 표출
+    markers.push(marker); // 마크 리스트에 추가
+    resolve(marker);
+  });
 }
 
 const restTemplate = (name, menu) => {
@@ -146,63 +127,52 @@ const restTemplate = (name, menu) => {
     `;
 };
 
-const getRestInfo = async (idx, i, restList) => {
-  console.log(idx, i, restList);
-  const response = await axios
-    .get(`http://localhost:9000/stores/${idx}`)
+async function fetchRestInfo(idx) {
+  const response = fetch(`http://localhost:9000/stores/${idx}`);
+  return response;
+}
+
+function loadRestInfo(idx, i, restList) {
+  fetchRestInfo(idx)
+    .then((res) => res.json())
     .then((data) => {
       const rest = {
-        title: data.data.name,
+        title: data.name,
         latlng: new kakao.maps.LatLng(
           restList.data[i].latitude,
           restList.data[i].longitude
         ),
       };
-
       positions.push(rest);
-      makeMark(rest); // 지도에 마크 표시
-      console.log(data.data);
-
-      rest_elements.push(restTemplate(data.data.name, data.data.bestMenu));
-      //   검색결과 리스트에 출력
-      $result_list.insertAdjacentHTML(
-        "afterbegin",
-        rest_elements[rest_elements.length - 1]
-      );
-
-      makeInfoWindow(
-        markers[i],
-        data.data,
-        rest_elements[rest_elements.length - 1]
-      );
+      printRestMarkers(rest, data, i);
     });
+}
 
-  return response;
-};
+async function printRestMarkers(rest, data, i) {
+  try {
+    makeMark(rest)
+      .then((marker) => {
+        console.log("음식점 data: ", data);
 
-// 마커와 검색결과 항목에 mouseover 했을때
-// 해당 장소에 인포윈도우에 장소명을 표시합니다
-// mouseout 했을 때는 인포윈도우를 닫습니다
-function makeInfoWindow(marker, data, rest_element) {
-  const itemEl = rest_element;
+        rest_elements.push(restTemplate(data.name, data.bestMenu));
+        //   검색결과 리스트에 출력
+        $result_list.insertAdjacentHTML(
+          "afterbegin",
+          rest_elements[rest_elements.length - 1]
+        );
 
-  kakao.maps.event.addListener(marker, "click", function () {
-    console.log(itemEl);
-    console.log("clicked");
-    displayInfowindow(marker, data);
-  });
+        //   rest_elements[rest_elements.length - 1].onmouseover = function () {
+        //     displayInfowindow(marker, data);
+        //   };
 
-  // kakao.maps.event.addListener(marker, "click", function () {
-  //   infowindow.close();
-  // });
-
-  itemEl.onmouseover = function () {
-    displayInfowindow(marker, data);
-  };
-
-  itemEl.onmouseout = function () {
-    infowindow.close();
-  };
+        kakao.maps.event.addListener(marker, "click", function () {
+          displayInfowindow(marker, data);
+        });
+      })
+      .catch((error) => console.log(error));
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
@@ -356,7 +326,6 @@ function displayInfowindow(marker, data) {
     removable: true,
   });
   infowindow.open(map, marker);
-  console.log(marker);
 
   $viewBtn = document.getElementById("viewBtn");
   $viewBtn.addEventListener("click", function (event) {
@@ -371,15 +340,13 @@ const getRestList = async (lat1, lat2, long1, long2) => {
       `http://localhost:9000/stores?latitudes=${lat1},${lat2}&longitudes=${long1}, ${long2}`
     )
     .then((data) => {
-      console.log("바운더리 식당 조회 성공:", data);
       temp = data;
       return temp;
     })
     .then((response) => {
       // 음식점 정보 가져오기
       for (let i = 0; i < response.data.length; i++) {
-        console.log("음식점 정보 가져오기:", response.data[i]);
-        getRestInfo(response.data[i].storeIdx, i, response);
+        loadRestInfo(response.data[i].storeIdx, i, response);
       }
     })
     .catch((error) => {
