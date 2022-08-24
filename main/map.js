@@ -92,16 +92,19 @@ function search_click() {
   }
 }
 
-function makeMark(latitude, longitude) {
-  var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+function makeMark(position) {
+  var imageSrc =
+    "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+  var imageSize = new kakao.maps.Size(24, 35); // 마커 이미지의 이미지 크기 입니다
+  var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); // 마커 이미지를 생성합니다
 
-  // 마커를 생성합니다
+  // 마커를 생성
   var marker = new kakao.maps.Marker({
-    position: markerPosition,
+    map: map, // 마커를 표시할 지도
+    position: position.latlng, // 마커를 표시할 위치
+    title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
+    image: markerImage, // 마커 이미지
   });
-
-  // 마커가 지도 위에 표시되도록 설정합니다
-  marker.setMap(map);
 }
 
 const getRestInfo = async (idx, i, restList) => {
@@ -115,8 +118,9 @@ const getRestInfo = async (idx, i, restList) => {
           restList.item[i].longitude
         ),
       };
+
       positions.push(rest);
-      makeMark(restList.item[i].latitude, restList.item[i].longitude); // 지도에 마크 표시
+      makeMark(rest); // 지도에 마크 표시
     });
 
   return response;
