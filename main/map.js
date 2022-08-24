@@ -22,8 +22,10 @@ var options = {
   level: 8,
 };
 var map = new kakao.maps.Map(container, options);
+const $result_list = document.getElementById("result-list"); // 검색 결과
 
-var positions = []; // map marks
+var positions = []; // 위치 정보 리스트
+var markers = []; // 지도 마커 리스트
 
 // keyword, location 선택하기
 var $key_btns = document.querySelectorAll(".keyword");
@@ -82,6 +84,9 @@ function search_click() {
   } else if (loc_val === 0) {
     alert("위치를 선택해주세요.");
   } else {
+    removeAllChildNods($result_list); // 기존에 있던 검색 결과 삭제
+    removeMarker(); // 지도에 표시된 마커 제거
+
     moveLocMap(loc_val); // 선택한 위치로 이동
     let boundsStr = map.getBounds().toString(); // ((남,서), (북,동))
 
@@ -89,6 +94,21 @@ function search_click() {
     for (let i = 0; i < temp.item.length; i++) {
       getRestInfo(temp.item[i].storeIdx, i, temp);
     }
+  }
+}
+
+// 지도 위에 표시되고 있는 마커를 모두 제거
+function removeMarker() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}
+
+// 기존 검색 결과창을 제거
+function removeAllChildNods(list) {
+  while (list.hasChildNodes()) {
+    list.removeChild(list.lastChild);
   }
 }
 
@@ -102,10 +122,22 @@ function makeMark(position) {
   var marker = new kakao.maps.Marker({
     map: map, // 마커를 표시할 지도
     position: position.latlng, // 마커를 표시할 위치
-    title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
+    // title: position.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
     image: markerImage, // 마커 이미지
   });
+
+  // marker.setMap(map); // 지도 위에 마커 표출
+  markers.push(marker); // 마크 리스트에 추가
 }
+
+const restTemplate = (name, menu) => {
+  return `
+    <div class="result">
+            <div class="rest-name">${name}</div>
+            <div class="rest-menu">${menu}</div>
+          </div>
+    `;
+};
 
 const getRestInfo = async (idx, i, restList) => {
   const response = await axios
@@ -121,10 +153,49 @@ const getRestInfo = async (idx, i, restList) => {
 
       positions.push(rest);
       makeMark(rest); // 지도에 마크 표시
+      console.log(data.data);
+
+      //   검색결과 출력
+      $result_list.insertAdjacentHTML(
+        "afterbegin",
+        restTemplate(data.data.name, data.data.bestMenu)
+      );
+
+      infoWindow(markers[i], data.data.name);
     });
 
   return response;
 };
+
+// 마커와 검색결과 항목에 mouseover 했을때
+// 해당 장소에 인포윈도우에 장소명을 표시합니다
+// mouseout 했을 때는 인포윈도우를 닫습니다
+function infoWindow(marker, title) {
+  kakao.maps.event.addListener(marker, "mouseover", function () {
+    displayInfowindow(marker, title);
+  });
+
+  kakao.maps.event.addListener(marker, "mouseout", function () {
+    infowindow.close();
+  });
+
+  //   itemEl.onmouseover = function () {
+  //     displayInfowindow(marker, title);
+  //   };
+
+  //   itemEl.onmouseout = function () {
+  //     infowindow.close();
+  //   };
+}
+var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+// 인포윈도우에 장소명을 표시합니다
+function displayInfowindow(marker, title) {
+  var content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+
+  infowindow.setContent(content);
+  infowindow.open(map, marker);
+}
 
 const getRestList = async (co1, co2, co3, co4) => {
   // co1: 북동, cor2: 북서, cor3: 남서, cor4:
