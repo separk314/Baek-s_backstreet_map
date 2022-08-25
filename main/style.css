@@ -70,7 +70,7 @@ body {
 .descript {
   position: absolute;
   top: 200px;
-  width: 380px;
+  width: 420px;
   font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -163,38 +163,243 @@ body {
   width: 100%;
   height: 100%;
 }
-.search-result-all::-webkit-scrollbar {
-  width: 10px; /* 스크롤바의 너비 */
+
+/* 지도 */
+.all-map {
+  display: flex;
+  width: 100%;
+  height: 700px;
+}
+#map {
+  width: 1000px;
+  height: 600px;
+  margin-left: 13%;
+}
+#result {
+  padding-left: 3%;
 }
 
-.search-result-all::-webkit-scrollbar-thumb {
-  height: 10%; /* 스크롤바의 길이 */
-  background: #bdbdbd; /* 스크롤바의 색상 */
-
+/* 키워드로 찾기 */
+.find-by-keyword {
+  width: 260px;
+}
+#keyword-result {
+  font-size: 13px;
+  color: #9b9b9b;
+  font-weight: bold;
+  text-align: left;
+}
+.keywords {
+  width: 260px;
+  display: flex;
+  align-content: flex-start;
+  padding-top: 5%;
+  text-align: left;
+  border-color: #b70000;
+  overflow: auto;
+  white-space: nowrap;
+  padding-top: 5%;
+}
+.key {
+  margin-right: 10px;
   border-radius: 10px;
+  background-color: white;
+  color: #b70000;
+  border-color: gray;
+  margin-bottom: 5px;
+}
+.keyword {
+  margin-right: 1%;
+  border-radius: 10px;
+  background-color: white;
+  color: #7d1818;
+  border: 1px solid #deb2b2;
+  display: inline-block;
+  font-weight: 400;
 }
 
-.search-result-all::-webkit-scrollbar-track {
-  background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+/* 위치로 찾기 */
+#location-result {
+  padding-top: 15%;
+  font-size: 13px;
+  color: #9b9b9b;
+  font-weight: bold;
+  text-align: left;
 }
-
 .location_container {
   width: 100%;
   overflow: auto;
   white-space: nowrap;
   padding-top: 5%;
 }
+.loc {
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: white;
+  color: #2524ff;
+  border-color: gray;
+  margin-bottom: 5px;
+}
+.loc_btn {
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: white;
+  color: #263053;
+  border: 1px solid #96a5dc;
+}
+.loc_clicked {
+  color: #ffffff;
+  background: #8192d1;
+}
 
 .location_container::-webkit-scrollbar {
   height: 10px;
 }
-
 .location_container::-webkit-scrollbar-thumb {
   height: 10%; /* 스크롤바의 길이 */
   background: #bdbdbd; /* 스크롤바의 색상 */
   border-radius: 10px;
 }
-
 .location_container::-webkit-scrollbar-track {
   background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+}
+
+.keywords::-webkit-scrollbar {
+  height: 10px;
+}
+.keywords::-webkit-scrollbar-thumb {
+  height: 10%; /* 스크롤바의 길이 */
+  background: #bdbdbd; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+.keywords::-webkit-scrollbar-track {
+  background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+}
+
+/* 검색하기*/
+.search_btn_container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 7%;
+}
+#search_btn {
+  width: 80px;
+  height: 30px;
+  background: #6d6d6d;
+  border-radius: 10px;
+  border-color: white;
+  color: #ffffff;
+}
+.search-result::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+.search-result::-webkit-scrollbar-thumb {
+  height: 10%; /* 스크롤바의 길이 */
+  background: #bdbdbd; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+.search-result::-webkit-scrollbar-track {
+  background: #f6f6f6; /*스크롤바 뒷 배경 색상*/
+}
+
+/* 검색 결과 */
+#search-result {
+  padding-top: 15%;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+}
+.search-result {
+  width: 260px;
+  height: 250px;
+  overflow-y: auto;
+  padding-left: 5px;
+}
+.result {
+  width: 220px;
+  /* height: 50px; */
+  display: flex;
+  background: #f6f6f6;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.rest-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.rest-menu {
+  margin-left: auto;
+  font-size: 11px;
+}
+
+/* infoWindow */
+.infoWindow {
+  width: 325px;
+  height: 216px;
+  border-radius: 10px;
+  border-color: red;
+}
+.infoWindow hr {
+  margin: 10px;
+}
+
+.infoWindow .info_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.info_header .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.like_dislike span {
+  font-size: 12px;
+  margin: 2px;
+}
+.svg {
+  display: inline-block;
+  width: 14.25px;
+  height: 13.98px;
+}
+
+.infoWindow .info_body {
+  margin: 10px;
+  margin-top: 20px;
+}
+.infoWindow .info_body div {
+  margin: 8px;
+  font-size: 16px;
+}
+
+.recommend {
+  margin-right: 4%;
+  border-radius: 10px;
+  border-style: none;
+  background: #efefef;
+  color: #000000;
+}
+
+#viewBtn_container {
+  margin-top: 25px;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+#viewBtn {
+  border: 0;
+  outline: 0;
+  background-color: white;
+}
+#viewBtn:hover {
+  background-color: lightgray;
 }

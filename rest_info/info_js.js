@@ -1,23 +1,198 @@
+const $rest_name = document.querySelector(".rest_name");
+const $like = document.querySelector("#like");
+const $dislike = document.querySelector("#dislike");
+const $location = document.querySelector(".location");
+const $menu = document.querySelector(".menu");
+
 const $reviewList = document.querySelector("#reviewList");
+const $youtube_btn = document.querySelector(".youtube_btn");
 const $channel_img = document.querySelector(".channel_img");
 const $youtube_title = document.querySelector(".youtube_title");
 const $uploader = document.getElementById("uploader");
 const $date = document.getElementById("date");
 
-import get_name from "./export_test.js";
-console.log(get_name);
-
 /* <button class="edit">수정</button>
 <button class="delete">삭제</button> */
 
-// const dataFetch = async () => {
-//   const response = await fetch("http://localhost:3100/");
-//   const data = await response.json();
-//   console.log(data);
-// };
-// const dataResult = dataFetch();
+const reviews = [];
+// 서버 데이터 가져오기
+const dataFetch = async (id) => {
+  const response = await axios
+    .get(`http://localhost:9000/stores/${id}/detail`)
+    .then((data) => {
+      const serverData = data.data;
+      console.log(serverData);
+      fetchYoutubeAPI(serverData.video);
+      updateInfo(serverData);
 
-const reviewItemTemplate = (newReview) => {
+      // 리뷰 1개씩 가져오기
+      for (let i = 0; i < serverData.reviews.length; i++) {
+        const strKeyword = putKeywords(serverData.reviews[i].keyword);
+
+        reviews.push(
+          reviewItemTemplate(
+            serverData.reviews[i].name,
+            serverData.reviews[i].text,
+            serverData.reviews[i].createdAt.substr(0, 10),
+            strKeyword,
+            i
+          )
+        );
+        $reviewList.insertAdjacentHTML("afterbegin", reviews[i]);
+      }
+
+      runModal(); // 신고하기(모달창) 실행
+      $youtube_btn.addEventListener("click", handleClick(serverData.video));
+    });
+  return response;
+};
+
+dataFetch(localStorage.getItem("local_storeIdx"));
+
+var myHeaders = new Headers();
+myHeaders.append(
+  "x-access-token",
+  `eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ` +
+    "." +
+    `eyJ1c2VySWR4Ijo1LCJpYXQiOjE2NjA5ODY4ODYsImV4cCI6MTY2MjQ1ODExNX0` +
+    "." +
+    `YmP66fyL2kofnrmJp5mWc8qPd2sUDWZU8I4mhzu` +
+    "-" +
+    `OfM`
+);
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Cookie", "JSESSIONID=D599D7B5BCC613AE8240024DEDA3C873");
+
+var raw = JSON.stringify({
+  reportReason: 3,
+});
+
+var requestOptions = {
+  method: "POST",
+  mode: "no-cors",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow",
+};
+
+fetch("http://localhost:9000/reviews/11", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log("result: ", result.body))
+  .catch((error) => console.log("error", error));
+
+function handleClick(videoLink) {
+  console.log("clicked");
+  window.open(videoLink);
+}
+
+// 키워드 넣기
+function putKeywords(intKeyword) {
+  let strKeyword = "";
+
+  for (let i = 0; i < intKeyword.length; i++) {
+    switch (intKeyword[i]) {
+      case 1:
+        strKeyword += `<button class="recommend">달콤해요</button>\n`;
+        break;
+      case 2:
+        strKeyword += `<button class="recommend">담백해요</button>\n`;
+        break;
+      case 3:
+        strKeyword += `<button class="recommend">느끼해요</button>\n`;
+        break;
+      case 4:
+        strKeyword += `<button class="recommend">자극적이에요</button>\n`;
+        break;
+      case 5:
+        strKeyword += `<button class="recommend">달달해요</button>\n`;
+        break;
+      case 6:
+        strKeyword += `<button class="recommend">혼밥하기 좋아요</button>\n`;
+        break;
+      case 7:
+        strKeyword += `<button class="recommend">친구들과 방문하기 좋아요</button>\n`;
+        break;
+      case 8:
+        strKeyword += `<button class="recommend">가족 외식하기 좋아요</button>\n`;
+        break;
+      case 9:
+        strKeyword += `<button class="recommend">데이트하기 좋아요</button>\n`;
+        break;
+      case 10:
+        strKeyword += `<button class="recommend">단체 모임하기 좋아요</button>\n`;
+        break;
+      case 11:
+        strKeyword += `<button class="recommend">친절해요</button>\n`;
+        break;
+      case 12:
+        strKeyword += `<button class="recommend">청결해요</button>\n`;
+        break;
+      case 13:
+        strKeyword += `<button class="recommend">인테리어가 예뻐요</button>\n`;
+        break;
+      case 14:
+        strKeyword += `<button class="recommend">주차하기 편해요</button>\n`;
+        break;
+      case 15:
+        strKeyword += `<button class="recommend">사진이 잘 나와요</button>\n`;
+        break;
+      case 16:
+        strKeyword += `<button class="recommend">대중교통으로 방문하기 편해요</button>\n`;
+        break;
+      case 17:
+        strKeyword += `<button class="recommend">야외 좌석(테라스)가 있어요</button>\n`;
+        break;
+      case 18:
+        strKeyword += `<button class="recommend">포장 가능해요</button>\n`;
+        break;
+      case 19:
+        strKeyword += `<button class="recommend">가성비가 좋아요</button>\n`;
+        break;
+      case 20:
+        strKeyword += `<button class="recommend">조용해요</button>\n`;
+        break;
+      case 21:
+        strKeyword += `<button class="recommend">애완동물 동반 가능해요</button>\n`;
+        break;
+    }
+  }
+  return strKeyword;
+}
+
+/* 신고하기 모달창 */
+function runModal() {
+  $(function () {
+    $(".confirm").click(function () {
+      //컨펌 이벤트 처리
+      modalClose();
+    });
+    $(".modal-open").click(function () {
+      $(".popup").css("display", "flex").hide().fadeIn();
+    });
+    $(".close").click(function () {
+      modalClose();
+    });
+    function modalClose() {
+      $(".popup").fadeOut();
+    }
+  });
+}
+
+// 가게 정보 업데이트
+function updateInfo(data) {
+  $rest_name.innerText = data["name"];
+  $like.innerText = `${data["like"]} %`;
+  if (data["like"] === 0) {
+    $dislike.innerText = `0 %`;
+  } else {
+    $dislike.innerText = `${100 - data["like"]} %`;
+  }
+  $location.innerText = data["introduce"];
+  $menu.innerText = data["menu"];
+}
+
+// 리뷰 등록 템플릿(다른 유저)
+const reviewItemTemplate = (name, text, createdAt, keywords, idx) => {
   return `
   <div class="review">
   <div class="review_profile">
@@ -32,13 +207,13 @@ const reviewItemTemplate = (newReview) => {
     </div>
     <div class="user_container">
       <div class="review_info">
-        <span class="user_name">숨마번</span>
-        <span class="review_date">2022.07.14</span>
+        <span class="user_name">${name}</span>
+        <span class="review_date">${createdAt}</span>
       </div>
       <div class="review_buttons">
-        <button id="modal-open">신고하기</button>  
-        <div class="popup-wrap" id="popup">
-          <div class="popup">
+        <button id="reviewBtn${idx}" class="modal-open">신고하기</button>  
+        <div class="popup-wrap popup">
+          <div class="popup-class">
             <div class="popup-body">
               <div class="body-content">
                 <div class="body-titlebox">
@@ -46,7 +221,7 @@ const reviewItemTemplate = (newReview) => {
                   <p>신고 사유를 선택해주세요.</p>
                 </div>
                 <div class="body-contentbox">
-                  <div id="report_btns">
+                  <div class="report_btns">
                     <button class="report_btn">부적절한 홍보</button>
                     <button class="report_btn">음란성 혹은 청소년에게 부적합한 내용</button>
                     <button class="report_btn">욕설 혹은 비방</button>
@@ -57,8 +232,8 @@ const reviewItemTemplate = (newReview) => {
               </div>
             </div>
             <div class="popup-foot">
-              <span class="pop-btn confirm" id="confirm">신고</span>
-              <span class="pop-btn close" id="close">취소</span>
+              <span class="pop-btn confirm">신고</span>
+              <span class="pop-btn close">취소</span>
             </div>
           </div>
         </div>
@@ -67,11 +242,11 @@ const reviewItemTemplate = (newReview) => {
   </div>
   <!-- 키워드 -->
   <div class="keywords">
-    <button class="recommend">우동 추천해요</button>
+    ${keywords}
   </div>
   <div class="review_body">
     <div class="review_textContainer">
-      <div calss="review_text">${newReview}</div>
+      <div calss="review_text">${text}</div>
     </div>
   </div>
   </div>
@@ -86,60 +261,16 @@ function fetchYoutubeAPI(youtubeURL) {
     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&regionCode=KR&key=${API_KEY}`
   )
     .then((response) => response.json())
-    .then((result) => updateYoutube(result.items[0]))
+    .then((result) => {
+      updateYoutube(result.items[0]);
+    })
     .catch((error) => console.log(error));
 }
 
 function updateYoutube(video) {
-  // console.log(video);
   $youtube_title.innerText = video.snippet.title;
-  $channel_img.innerHTML = `<img class="channel_img" src=${video.snippet.thumbnails?.high.url} />`;
+  $channel_img.setAttribute("src", video.snippet.thumbnails?.high.url);
+  console.log($channel_img);
   $uploader.innerText = video.snippet.channelTitle;
   $date.innerText = video.snippet.publishedAt.substr(0, 10);
 }
-
-function openWindow() {
-  var popupWidth = 430;
-  var popupHeight = 475;
-  var popupX = window.screen.width / 2 - popupWidth / 2;
-  var popupY = window.screen.height / 2 - popupHeight / 2;
-
-  var option =
-    "height=" +
-    popupHeight +
-    ", width=" +
-    popupWidth +
-    ", left=" +
-    popupX +
-    ", top=" +
-    popupY;
-
-  window.open("report.html", "신고 화면", option);
-}
-
-const newReview = reviewItemTemplate("첫 번째 리뷰");
-$reviewList.insertAdjacentHTML("afterbegin", newReview);
-
-const newReview2 = reviewItemTemplate("두 번째 리뷰");
-$reviewList.insertAdjacentHTML("afterbegin", newReview2);
-
-const newReview3 = reviewItemTemplate("세 번째 리뷰");
-$reviewList.insertAdjacentHTML("afterbegin", newReview3);
-
-fetchYoutubeAPI("https://www.youtube.com/watch?v=G0uVWsDJMVM");
-
-$(function () {
-  $("#confirm").click(function () {
-    //컨펌 이벤트 처리
-    modalClose();
-  });
-  $("#modal-open").click(function () {
-    $("#popup").css("display", "flex").hide().fadeIn();
-  });
-  $("#close").click(function () {
-    modalClose();
-  });
-  function modalClose() {
-    $("#popup").fadeOut();
-  }
-});

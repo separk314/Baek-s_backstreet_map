@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+    <link rel="stylesheet" href="sign_up.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백종원 골목식당 회원가입</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="in-header">
+              <div class="home">
+                <a href="header.html"
+                  ><img src="../titlelogo_mainscreen.png" alt=""
+                /></a>
+              </div>
+              <div class="search">
+                <input id="item" type="text" placeholder="가게 이름을 검색해보세요" />
+                <img
+                  class="bt"
+                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+                />
+                <div class="search-title">검색</div>
+              </div>
+              <div class="login">
+                <a href="../login/login.html">
+                  <button>로그인</button>
+                </a>
+              </div>
+              <div class="regi">
+                <a href="../find_signup/sign_up.html">
+                  <button>회원가입</button>
+                </a>
+              </div>
+            </div>
+          </div>
+    </header>
+    <section>
+        <form>
+            <div class="left">
+                <div class="sign-up-title">회원가입</div>
+            </div>
+            <div class="middle">
+                <div class="sign-up-form">
+                    <div class="form-2">
+                        <label class="form-label" for="nickname" name="nickname" id="nickname">닉네임</label>
+                        <div class="part">
+                            <input type="text" class="form-input" id="nickname" />
+                            <button class="form-summit" type="button" onclick="username()">
+                                중복확인
+                            </button>
+                        </div>
+                        <div id="username_alert" class="alert-text" style="display: none">*닉네임을 입력해주세요.</div>
+                    </div>
+                    <div class="form-2">
+                        <label class="form-label" for="loginId" name="loginId" id="loginId" >아이디</label>
+                        <div class="part">
+                            <input type="text" class="form-input" id="loginId" />
+                            <button class="form-summit" type="button" onclick="idCheck()">
+                                중복확인
+                            </button>
+                        </div>
+                        <div id="id_form" class="form-text">*4글자 이상 (숫자, 알파벳 가능)</div>
+                        <div id="id_alert" class="alert-text" style="display: none">*4글자 이상 입력해주세요.</div>
+                    </div>
+                    <div class="form-2">
+                        <label class="form-label" for="password" >비밀번호</label>
+                        <div class="part">
+                            <input type="password" class="form-input" id="password" />
+                        </div>
+                        <div class="form-text">*4글자 이상 (숫자, 알파벳, 특수문자 가능)</div>
+                        <div id="pw_alert" class="alert-text" style="display: none">*4글자 이상 입력해주세요.</div>
+                    </div>
+                    <div class="form-2">
+                        <label class="form-label" for="password_check">비밀번호 확인</label>
+                        <div class="part">
+                            <input type="password" class="form-input" id="password_check" />
+                        </div>
+                        <div id="pw_check_alert" class="form-text">*확인을 위해 비밀번호를 다시 입력해주세요.</div>
+                        <div id="pw_not_alert" class="alert-text" style="display: none">*비밀번호가 일치하지 않습니다.</div>
+                    </div>
+                    <div class="form-2">
+                        <label class="form-label" for="email" name="email" id="email">이메일</label>
+                        <div class="part">
+                            <input type="text" class="form-input" id="email" />
+                            <button class="form-summit" type="button" onclick="email_check()">
+                                중복확인
+                            </button>
+                        </div>
+                        <div id="email_form" class="form-text">*유효한 이메일 주소를 입력해주세요.</div>
+                        <div id="email_alert" class="alert-text" style="display: none">*유효한 이메일 주소가 아닙니다.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <input class="sign-up-summit" type="submit" value="가입하기">
+            </input>
+            </div>
+        </form>
+    </section>
+    <script src="sign_up.js"></script>
+</body>
