@@ -82,12 +82,24 @@
         font-weight: 600;
         cursor: pointer;
       }
+      .login button {
+        border: 0;
+        outline: 0;
+        background-color: white;
+        cursor:pointer;
+      }
       .regi {
         padding-right: 10%;
         padding-top: 8px;
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
+      }
+      .regi button {
+        border: 0;
+        outline: 0;
+        background-color: white;
+        cursor:pointer;
       }
       .slides img {
         margin: 0;
@@ -120,7 +132,7 @@
             /></a>
           </div>
           <div class="search">
-            <input type="text" placeholder="가게 이름을 검색해보세요" />
+            <input id="item" type="text" placeholder="가게 이름을 검색해보세요" />
             <img
               class="bt"
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
@@ -128,10 +140,14 @@
             <div class="search-title">검색</div>
           </div>
           <div class="login">
-            <a href="../mypage.html">마이페이지</a>
+            <a href="../login/login.html">
+              <button>마이페이지</button>
+            </a>
           </div>
           <div class="regi">
-            <a href="../find_signup/sign_up.html">로그아웃</a>
+            <a href="../find_signup/sign_up.html">
+              <button>로그아웃</button>
+            </a>
           </div>
         </div>
       </div>
@@ -141,15 +157,17 @@
       <div class="text">
         <div class="highlight">
           <div class="name">
-            <span>닉네임</span>
+            <span>조보아</span>
             <span>씨</span>
           </div>
           <p>이것 좀 먹어봐유!</p>
         </div>
         <div class="descript">
           <p style="text-align: left">
-            무언가 글자를 넣어서 설명을 하면 더 좋을 것 같습니다. 어떤 말을
-            넣어야할지 고민이라 주저리주저리 하는 중입니다. 무슨 말을 넣을까요
+            우리 동네에 백종원의 골목식당에 나왔던 식당들이 있을까?
+          </p>
+          <p style="text-align: left">
+            백's 골목식당에서 우리 동네 골목식당들을 찾아보세요!
           </p>
         </div>
       </div>
@@ -159,37 +177,38 @@
             <div class="slide_list clearfix">
               <div class="slide_content slide01">
                 <img
-                  style="width: 850px; height: auto"
-                  src="./food_mainbanner_1.png"
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="버거인.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide02">
                 <img
-                  style="width: 800px; height: auto; padding-top: 100px"
-                  src="./food_mainbanner_2.png"
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="연돈.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide03">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="./food_mainbanner_3.png"
+                  src="가야가야.png"
                   alt=""
                 />
               </div>
-              <div class="slide_content slide04" style="width: 900px">
+              <div class="slide_content slide04">
                 <img
-                  style="width: 750px; height: 550px; padding-top: 80px"
-                  src="./test_img.png"
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="오복함흥냉면.png"
                   alt=""
                 />
               </div>
-              <div
-                class="slide_content slide05"
-                style="width: 800px; height: 400px"
-              >
-                <p>5</p>
+              <div class="slide_content slide05">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="정가네지짐이.png"
+                  alt=""
+                />
               </div>
             </div>
             <!-- // .slide_list -->
@@ -220,458 +239,90 @@
       <div class="scroll2">스크롤 해보세요!</div>
       <div class="zoom">&darr;</div>
     </div>
-    <div class="all-map" style="display: flex; width: 100%; height: 700px">
-      <div
-        id="map"
-        style="width: 1000px; height: 600px; margin-left: 13%"
-      ></div>
-      <div id="result" style="padding: 3%">
-        <div class="kewrod">
-          <div
-            id="kewrod-result"
-            style="
-              font-size: 13px;
-              color: gray;
-              font-weight: bold;
-              text-align: left;
-            "
-          >
-            키워드로 찾기
-          </div>
-          <div
-            class="eating"
-            style="
-              display: flex;
-              padding-top: 5%;
-              text-align: left;
-              border-color: #b70000;
-            "
-          >
-            <button
-              id="hot"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              매콤
-            </button>
-            <button
-              id="daldal"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              달달
-            </button>
-            <button
-              id="nuki"
-              style="
-                width: 50px;
-                margin-right: 4%;
-                border-radius: 10px;
-                background-color: white;
-                color: #b70000;
-                border-color: gray;
-              "
-            >
-              느끼
-            </button>
-            <button
-              id="solo"
-              style="
-                width: 50px;
-                border-radius: 10px;
-                color: #b70000;
-                background-color: white;
-                border-color: gray;
-              "
-            >
-              혼밥
-            </button>
+    <div class="all-map">
+      <div id="map"></div>
+      <div id="result">
+        <div class="find-by-keyword">
+          <div id="keyword-result">키워드로 찾기</div>
+          <div class="keywords">
+            <div class="keywords_container">
+              <div class="key">
+                <button id="keyword1" class="keyword">달콤해요</button>
+                <button id="keyword2" class="keyword">담백해요</button>
+                <button id="keyword3" class="keyword">느끼해요</button>
+                <button id="keyword4" class="keyword">자극적이에요</button>
+                <button id="keyword5" class="keyword">달달해요</button>
+                <button id="keyword6" class="keyword">혼밥하기 좋아요</button>
+                <button id="keyword7" class="keyword">
+                  친구들과 방문하기 좋아요
+                </button>
+                <button id="keyword8" class="keyword">
+                  가족 외식하기 좋아요
+                </button>
+                <button id="keyword9" class="keyword">데이트하기 좋아요</button>
+                <button id="keyword10" class="keyword">
+                  단체 모임하기 좋아요
+                </button>
+                <button id="keyword11" class="keyword">친절해요</button>
+              </div>
+              <div class="key">
+                <button id="keyword12" class="keyword">청결해요</button>
+                <button id="keyword13" class="keyword">
+                  인테리어가 예뻐요
+                </button>
+                <button id="keyword14" class="keyword">주차하기 편해요</button>
+                <button id="keyword15" class="keyword">사진이 잘 나와요</button>
+                <button id="keyword16" class="keyword">
+                  대중교통으로 방문하기 편해요
+                </button>
+                <button id="keyword17" class="keyword">
+                  야외 좌석(테라스)가 있어요
+                </button>
+                <button id="keyword18" class="keyword">포장 가능해요</button>
+                <button id="keyword19" class="keyword">가성비가 좋아요</button>
+                <button id="keyword20" class="keyword">조용해요</button>
+                <button id="keyword21" class="keyword">
+                  애완동물 동반 가능해요
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="location">
-          <div
-            id="location-result"
-            style="
-              padding-top: 15%;
-              font-size: 13px;
-              color: gray;
-              font-weight: bold;
-              text-align: left;
-            "
-          >
-            위치로 찾기
-          </div>
+        <div class="find-by-location">
+          <div id="location-result">위치로 찾기</div>
           <div class="location_container">
-            <div
-              class="loc1"
-              style="
-                width: 50px;
-                margin-right: 10px;
-                border-radius: 10px;
-                background-color: white;
-                color: #2524ff;
-                border-color: gray;
-                margin-bottom: 5px;
-              "
-            >
-              <button
-                id="seoul"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                서울
-              </button>
-              <button
-                id="keung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경기
-              </button>
-              <button
-                id="incheon"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                인천
-              </button>
-              <button
-                id="busan"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                부산
-              </button>
-              <button
-                id="ulsan"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                대구
-              </button>
-              <button
-                id="kang"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                대전
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                광주
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경남
-              </button>
+            <div class="loc">
+              <button id="seoul" class="loc_btn">서울</button>
+              <button id="gyeonggi" class="loc_btn">경기</button>
+              <button id="incheon" class="loc_btn">인천</button>
+              <button id="busan" class="loc_btn">부산</button>
+              <button id="daegu" class="loc_btn">대구</button>
+              <button id="daejeon" class="loc_btn">대전</button>
+              <button id="gwangju" class="loc_btn">광주</button>
+              <button id="gyeongnam" class="loc_btn">경남</button>
             </div>
-            <div
-              class="loc2"
-              style="
-                width: 50px;
-                margin-right: 10px;
-                border-radius: 10px;
-                background-color: white;
-                color: #2524ff;
-                border-color: gray;
-                margin-bottom: 5px;
-              "
-            >
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                경북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                울산
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                강원
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                충남
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                충북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                전남
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                전북
-              </button>
-              <button
-                id="chung"
-                style="
-                  width: 50px;
-                  margin-right: 10px;
-                  border-radius: 10px;
-                  background-color: white;
-                  color: #2524ff;
-                  border-color: gray;
-                "
-              >
-                제주
-              </button>
+            <div class="loc">
+              <button id="gyeongbuk" class="loc_btn">경북</button>
+              <button id="ulsan" class="loc_btn">울산</button>
+              <button id="gangwon" class="loc_btn">강원</button>
+              <button id="chungnam" class="loc_btn">충남</button>
+              <button id="chungbuk" class="loc_btn">충북</button>
+              <button id="jeonnam" class="loc_btn">전남</button>
+              <button id="jeonbuk" class="loc_btn">전북</button>
+              <button id="jeju" class="loc_btn">제주</button>
             </div>
           </div>
         </div>
-        <div
-          id="search-result"
-          style="
-            padding-top: 15%;
-            margin-bottom: 15px;
-            font-size: 13px;
-            color: black;
-            font-weight: bold;
-            text-align: left;
-          "
-        >
-          검색 결과
+        <div class="search_btn_container">
+          <button id="search_btn">검색하기</button>
         </div>
-        <div
-          class="search-result-all"
-          style="
-            width: 260px;
-            height: 250px;
-            overflow-y: scroll;
-            padding-left: 5px;
-          "
-        >
-          <div
-            class="search-result-all1"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method1"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method11"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
+        <div id="search-result">검색 결과</div>
+        <div id="result-list" class="search-result">
+          <div class="result">
+            <div class="rest-name"></div>
+            <div class="rest-menu">키워드, 위치를 선택한 후 검색하기 버튼을 눌러주세요</div>
           </div>
-          <div
-            class="search-result-all2"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method2"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method22"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
-          <div
-            class="search-result-all3"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method3"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method33"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
-          <div
-            class="search-result-all4"
-            style="
-              width: 220px;
-              height: 50px;
-              display: flex;
-              background: #f6f6f6;
-              border-radius: 10px;
-              padding: 20px;
-              margin-bottom: 20px;
-            "
-          >
-            <div
-              class="search-method4"
-              style="font-weight: bold; font-size: 14px"
-            >
-              마번 텐동
-            </div>
-            <div
-              class="search-method44"
-              style="margin-left: auto; font-size: 11px"
-            >
-              텐동 전문 일식집
-            </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -688,12 +339,12 @@
     >
       <div class="left-about" style="display: flex; padding-left: 5%">
         <div class="about" style="margin-right: 40px">ABOUT AS</div>
-        <div class="about" style="margin-right: 20px">회사 이름</div>
-        <div class="about">동아리 이름</div>
+        <div class="about" style="margin-right: 20px">味친놈들</div>
+        <div class="about">UMC</div>
       </div>
       <div class="center-about" style="display: flex; padding-left: 12%">
         <div class="about" style="margin-right: 40px">CONTACT</div>
-        <div class="about" style="margin-right: 20px">연락처 010 0000 0000</div>
+        <div class="about" style="margin-right: 20px">연락처 010 1234 0000</div>
         <div class="about" style="margin-right: 20px">이메일 abcd@abcd.com</div>
         <div class="about">인스타그램 @abcdefg</div>
       </div>
@@ -702,60 +353,16 @@
         style="display: flex; margin-left: auto; padding-right: 5%"
       >
         <div class="about" style="margin-right: 40px">SERVICE</div>
-        <div class="about" style="margin-right: 20px">무언가 010 0000 0000</div>
-        <div class="about" style="margin-right: 20px">내용 abcd@abcd.com</div>
+        <div class="about" style="margin-right: 20px">연락처 010 1234 5678</div>
+        <div class="about" style="margin-right: 20px">이메일 abcd@abcd.com</div>
       </div>
     </div>
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1105caefe8133f02fb02b6090b63c644"
     ></script>
-    <script>
-      var container = document.getElementById("map");
-      var options = {
-        center: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-        level: 3,
-      };
-
-      var map = new kakao.maps.Map(container, options);
-
-      var positions = [
-        {
-          title: "미식본좌",
-          latlng: new kakao.maps.LatLng(37.5874286291778, 127.03602150310793),
-        },
-        {
-          title: "생태연못",
-          latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-        },
-        {
-          title: "텃밭",
-          latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-        },
-        {
-          title: "근린공원",
-          latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-        },
-      ];
-
-      var imageSrc =
-        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-      for (var i = 0; i < positions.length; i++) {
-        // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new kakao.maps.Size(24, 35);
-
-        // 마커 이미지를 생성합니다
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          map: map, // 마커를 표시할 지도
-          position: positions[i].latlng, // 마커를 표시할 위치
-          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          image: markerImage, // 마커 이미지
-        });
-      }
-    </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./map.js"></script>
+    <script src="../search.js"></script>
   </body>
 </html>

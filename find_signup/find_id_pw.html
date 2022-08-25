@@ -1,65 +1,102 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <!-- <link rel="stylesheet" href="reset.css"> -->
-    <link rel="stylesheet" href="find_id_pw.css">
+    <link rel="stylesheet" href="find_id_pw.css" />
     <script src="find_id_pw.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>백종원 골목식당 아이디, 비번 찾기</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="head-brand">
-            <a href="header.html"><img src="./titlelogo_mainscreen.png" alt=""></a>
-        </div>  
-        <div class="search">
-            <input type="text" placeholder="가게 이름을 검색해보세요" />
+      <div class="header">
+        <div class="in-header">
+          <div class="home">
+            <a href="header.html"
+              ><img src="../titlelogo_mainscreen.png" alt=""
+            /></a>
+          </div>
+          <div class="search">
+            <input
+              id="item"
+              type="text"
+              placeholder="가게 이름을 검색해보세요"
+            />
             <img
               class="bt"
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
             />
             <div class="search-title">검색</div>
+          </div>
+          <div class="login">
+            <a href="../login/login.html">
+              <button>로그인</button>
+            </a>
+          </div>
+          <div class="regi">
+            <a href="../find_signup/sign_up.html">
+              <button>회원가입</button>
+            </a>
+          </div>
         </div>
-        <div class="login">로그인</div>
-        <div class="regi">회원가입</div>
+      </div>
     </header>
 
     <section>
-        <div class="wrap">
-          <ul class="tabs">
-            <li class="tab-link current" data-tab="tab-1">아이디 찾기</li>
-            <li class="tab-link not-current-pw" data-tab="tab-2">비밀번호 찾기</li>
-          </ul>
-          <div id="tab-1" class="tab-content tab-id-content current">
-            <form id="id-find-form" class="form" onsubmit="return check_email()">
-              <label class="form-label" for="user-email">이메일 입력</label>
-              <div class="part">
-                  <input type="text" class="form-input" required id="user-email" />
-              </div>
-              <div id="id-find-check" class="form-text">*이메일을 정확히 입력해주세요.</div>
-              <button id="id-find-sumbit" class="form-search" type="submit" onclick="findId()">찾기</button>
-            </form>
-            <div id = "find_id_result" class="find_id_result">
-              <div id="find_id_text" class="find_id_text">아이디를 찾았습니다.</div>
-              <div id="find_id_id" class="find_id_id">아이디 들어갈 공간</div>
-              <button id="id-find-sumbit" class="form-search" type="submit">로그인</button>
+      <div class="wrap">
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-1">아이디 찾기</li>
+          <li class="tab-link not-current-pw" data-tab="tab-2">
+            비밀번호 찾기
+          </li>
+        </ul>
+        <div id="tab-1" class="tab-content tab-id-content current">
+          <form id="id-find-form" class="form" onsubmit="return check_email()">
+            <label class="form-label" for="user-email">이메일 입력</label>
+            <div class="part">
+              <input type="text" class="form-input" required id="user-email" />
             </div>
-          </div>
-          <div id="tab-2" class="tab-content tab-pw-content">
-            <form class="form">
-              <label class="form-label" for="username">아이디 입력</label>
-              <div class="part">
-                  <input type="text" class="form-input" id="username" />
-              </div>
-              <label class="form-label" for="username">이메일 입력</label>
-              <div class="part">
-                  <input type="text" class="form-input" id="username" />
-              </div>
-              <div id="pw-find-check" class="form-text">*아이디와 이메일을 정확히 입력해 주세요.</div>
-              <button class="form-search" type="button">찾기</button>
-            </form>
+            <div id="id-find-check" class="form-text">
+              *이메일을 정확히 입력해주세요.
+            </div>
+            <button
+              id="id-find-sumbit"
+              class="form-search"
+              type="submit"
+              onclick="findId()"
+            >
+              찾기
+            </button>
+          </form>
+          <div id="find_id_result" class="find_id_result">
+            <div id="find_id_text" class="find_id_text">
+              아이디를 찾았습니다.
+            </div>
+            <div id="find_id_id" class="find_id_id">아이디 들어갈 공간</div>
+            <button id="id-find-sumbit" class="form-search" type="submit">
+              로그인
+            </button>
           </div>
         </div>
+        <div id="tab-2" class="tab-content tab-pw-content">
+          <form class="form">
+            <label class="form-label" for="username">아이디 입력</label>
+            <div class="part">
+              <input type="text" class="form-input" id="username" />
+            </div>
+            <label class="form-label" for="username">이메일 입력</label>
+            <div class="part">
+              <input type="text" class="form-input" id="username" />
+            </div>
+            <div id="pw-find-check" class="form-text">
+              *아이디와 이메일을 정확히 입력해 주세요.
+            </div>
+            <button class="form-search" type="button">찾기</button>
+          </form>
+        </div>
+      </div>
     </section>
+  </body>
+</html>
