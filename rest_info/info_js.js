@@ -18,7 +18,8 @@ const reviews = [];
 // 서버 데이터 가져오기
 const dataFetch = async (id) => {
   const response = await axios
-    .get(`http://localhost:9000/stores/${id}/detail`)
+    // .get(`http://localhost:9000/stores/${id}/detail`)
+    .get(`http://localhost:9000/stores/11/detail`)
     .then((data) => {
       const serverData = data.data;
       console.log(serverData);

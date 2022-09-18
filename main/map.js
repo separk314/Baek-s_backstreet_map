@@ -128,7 +128,7 @@ const restTemplate = (name, menu) => {
 };
 
 async function fetchRestInfo(idx) {
-  const response = fetch(`http://localhost:9000/stores/${idx}`);
+  const response = fetch(`/${idx}`);
   return response;
 }
 
@@ -145,6 +145,7 @@ function loadRestInfo(idx, i, restList) {
       };
       positions.push(rest);
       printRestMarkers(rest, data, i);
+      console.log(data);
     });
 }
 
