@@ -1,4 +1,9 @@
 // 임시 데이터
+
+// import axios from "axios";
+
+// axios.defaults.baseURL = "baeksstreetmap.shop";
+
 let temp = {};
 
 var container = document.getElementById("map");
@@ -46,8 +51,20 @@ function key_click(e) {
     document.getElementById(clicked_val).style.color = "white";
   }
 }
+
+const getRestList2 = async (lat1, lat2, long1, long2) => {
+  console.log("실행");
+
+  const response = await axios
+    .get(`baeksstreetmap.shop/users/loginId/dkdlel23`)
+    .then((data) => console.log(data))
+    .catch((error) => console.log("error: ", error));
+};
+
 function loc_click(e) {
   console.log(e.target.getAttribute("id"));
+  getRestList2(37, 38, 126, 127);
+
   if (e.target.classList[1] === "loc_clicked") {
     e.target.classList.remove("loc_clicked");
     loc_val = 0;
@@ -128,7 +145,7 @@ const restTemplate = (name, menu) => {
 };
 
 async function fetchRestInfo(idx) {
-  const response = fetch(`http://localhost:9000/stores/${idx}`);
+  const response = fetch(`/${idx}`);
   return response;
 }
 
@@ -145,6 +162,7 @@ function loadRestInfo(idx, i, restList) {
       };
       positions.push(rest);
       printRestMarkers(rest, data, i);
+      console.log(data);
     });
 }
 
@@ -337,7 +355,7 @@ function displayInfowindow(marker, data) {
 const getRestList = async (lat1, lat2, long1, long2) => {
   const response = await axios
     .get(
-      `http://localhost:9000/stores?latitudes=${lat1},${lat2}&longitudes=${long1}, ${long2}`
+      `baeksstreetmap.shop/stores?latitudes=${lat1},${lat2}&longitudes=${long1}, ${long2}`
     )
     .then((data) => {
       temp = data;
