@@ -1,11 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>백종원 골목식당</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+      }
+      .search img {
+        position: absolute;
+        width: 17px;
+        top: 10px;
+        right: 90px;
+      }
+      input {
+        width: 100%;
+        border-radius: 15px;
+        padding: 10px 12px;
+        padding-left: 55px;
+        font-size: 14px;
+        font-weight: 600;
+        color: gray;
+        border: 1px solid #f6f6f6;
+        background-color: #f6f6f6;
+      }
+      .background {
+        width: 100%;
+      }
+      .header {
+        position: fixed;
+        width: 100%;
+        height: 80px;
+        padding-top: 20px;
+        background-color: white;
+        z-index: 1;
+      }
+      .home {
+        padding-left: 10%;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+      .in-header {
+        width: 100%;
+        display: flex;
+      }
+      .search {
+        position: relative;
+        width: 500px !important;
+        margin-left: auto;
+        padding-right: 80px;
+      }
+      .search-title {
+        position: absolute;
+        width: 50px;
+        font-size: 14px;
+        font-weight: 800;
+        top: 9px;
+        left: 6px;
+      }
+      .login {
+        padding-right: 5%;
+        padding-top: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .login button {
+        border: 0;
+        outline: 0;
+        background-color: white;
+        cursor:pointer;
+      }
+      .regi {
+        padding-right: 10%;
+        padding-top: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .regi button {
+        border: 0;
+        outline: 0;
+        background-color: white;
+        cursor:pointer;
+      }
+      .slides img {
+        margin: 0;
+        width: 100%;
+      }
+      .bt {
+        cursor: pointer;
+      }
+      .scroll {
+        padding-top: 100px;
+        margin-bottom: 200px;
+      }
+      .scroll1 {
+        font-weight: bold;
+      }
+      .zoom {
+        font-weight: 900;
+        font-size: 30px;
+        color: #b70000;
+      }
+    </style>
   </head>
   <body>
-    <h1>test</h1>
+    <div class="background">
+      <div class="header">
+        <div class="in-header">
+          <div class="home">
+            <a href="header.html"
+              ><img src="../titlelogo_mainscreen.png" alt=""
+            /></a>
+          </div>
+          <div class="search">
+            <input id="item" type="text" placeholder="가게 이름을 검색해보세요" />
+            <img
+              class="bt"
+              src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+            />
+            <div class="search-title">검색</div>
+          </div>
+          <div class="login">
+            <a href="../login/login.html">
+              <button>로그인</button>
+            </a>
+          </div>
+          <div class="regi">
+            <a href="../find_signup/sign_up.html">
+              <button>회원가입</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 배경 사진 -->
+    <div class="container">
+      <div class="text">
+        <div class="highlight">
+          <div class="name">
+            <span>조보아</span>
+            <span>씨</span>
+          </div>
+          <p>이것 좀 먹어봐유!</p>
+        </div>
+        <div class="descript">
+          <p style="text-align: left">
+            우리 동네에 백종원의 골목식당에 나왔던 식당들이 있을까?
+          </p>
+          <p style="text-align: left">
+            백's 골목식당에서 우리 동네 골목식당들을 찾아보세요!
+          </p>
+        </div>
+      </div>
+      <div id="img_container" style="padding-top: 80px">
+        <div class="slide_wrap">
+          <div class="slide_box">
+            <div class="slide_list clearfix">
+              <div class="slide_content slide01">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="버거인.png"
+                  alt=""
+                />
+              </div>
+              <div class="slide_content slide02">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="연돈.png"
+                  alt=""
+                />
+              </div>
+              <div class="slide_content slide03">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="가야가야.png"
+                  alt=""
+                />
+              </div>
+              <div class="slide_content slide04">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="오복함흥냉면.png"
+                  alt=""
+                />
+              </div>
+              <div class="slide_content slide05">
+                <img
+                  style="width: 850px; height: auto; padding-top: 100px"
+                  src="정가네지짐이.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <!-- // .slide_list -->
+          </div>
+          <!-- // .slide_box -->
+        </div>
+        <!-- // .slide_wrap -->
+      </div>
+    </div>
+    <!-- // .container -->
+    <div class="slide_controller">
+      <div class="slide_btn_box">
+        <button type="button" class="slide_btn_prev">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button type="button" class="slide_btn_next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+      <!-- // .slide_btn_box -->
+      <ul class="slide_pagination"></ul>
+      <!-- // .slide_pagination -->
+    </div>
+    <script src="./slideShow.js"></script>
+
+    <div class="scroll">
+      <div class="scroll1">내 근처 골목 식당이 궁금하다면?</div>
+      <div class="scroll2">스크롤 해보세요!</div>
+      <div class="zoom">&darr;</div>
+    </div>
+    <div class="all-map">
+      <div id="map"></div>
+      <div id="result">
+        <div class="find-by-keyword">
+          <div id="keyword-result">키워드로 찾기</div>
+          <div class="keywords">
+            <div class="keywords_container">
+              <div class="key">
+                <button id="keyword1" class="keyword">달콤해요</button>
+                <button id="keyword2" class="keyword">담백해요</button>
+                <button id="keyword3" class="keyword">느끼해요</button>
+                <button id="keyword4" class="keyword">자극적이에요</button>
+                <button id="keyword5" class="keyword">달달해요</button>
+                <button id="keyword6" class="keyword">혼밥하기 좋아요</button>
+                <button id="keyword7" class="keyword">
+                  친구들과 방문하기 좋아요
+                </button>
+                <button id="keyword8" class="keyword">
+                  가족 외식하기 좋아요
+                </button>
+                <button id="keyword9" class="keyword">데이트하기 좋아요</button>
+                <button id="keyword10" class="keyword">
+                  단체 모임하기 좋아요
+                </button>
+                <button id="keyword11" class="keyword">친절해요</button>
+              </div>
+              <div class="key">
+                <button id="keyword12" class="keyword">청결해요</button>
+                <button id="keyword13" class="keyword">
+                  인테리어가 예뻐요
+                </button>
+                <button id="keyword14" class="keyword">주차하기 편해요</button>
+                <button id="keyword15" class="keyword">사진이 잘 나와요</button>
+                <button id="keyword16" class="keyword">
+                  대중교통으로 방문하기 편해요
+                </button>
+                <button id="keyword17" class="keyword">
+                  야외 좌석(테라스)가 있어요
+                </button>
+                <button id="keyword18" class="keyword">포장 가능해요</button>
+                <button id="keyword19" class="keyword">가성비가 좋아요</button>
+                <button id="keyword20" class="keyword">조용해요</button>
+                <button id="keyword21" class="keyword">
+                  애완동물 동반 가능해요
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="find-by-location">
+          <div id="location-result">위치로 찾기</div>
+          <div class="location_container">
+            <div class="loc">
+              <button id="seoul" class="loc_btn">서울</button>
+              <button id="gyeonggi" class="loc_btn">경기</button>
+              <button id="incheon" class="loc_btn">인천</button>
+              <button id="busan" class="loc_btn">부산</button>
+              <button id="daegu" class="loc_btn">대구</button>
+              <button id="daejeon" class="loc_btn">대전</button>
+              <button id="gwangju" class="loc_btn">광주</button>
+              <button id="gyeongnam" class="loc_btn">경남</button>
+            </div>
+            <div class="loc">
+              <button id="gyeongbuk" class="loc_btn">경북</button>
+              <button id="ulsan" class="loc_btn">울산</button>
+              <button id="gangwon" class="loc_btn">강원</button>
+              <button id="chungnam" class="loc_btn">충남</button>
+              <button id="chungbuk" class="loc_btn">충북</button>
+              <button id="jeonnam" class="loc_btn">전남</button>
+              <button id="jeonbuk" class="loc_btn">전북</button>
+              <button id="jeju" class="loc_btn">제주</button>
+            </div>
+          </div>
+        </div>
+        <div class="search_btn_container">
+          <button id="search_btn">검색하기</button>
+        </div>
+        <div id="search-result">검색 결과</div>
+        <div id="result-list" class="search-result">
+          <div class="result">
+            <div class="rest-name"></div>
+            <div class="rest-menu">키워드, 위치를 선택한 후 검색하기 버튼을 눌러주세요</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="about-us"
+      style="
+        height: 30px;
+        display: flex;
+        margin-bottom: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #cacaca;
+      "
+    >
+      <div class="left-about" style="display: flex; padding-left: 5%">
+        <div class="about" style="margin-right: 40px">ABOUT AS</div>
+        <div class="about" style="margin-right: 20px">味친놈들</div>
+        <div class="about">UMC</div>
+      </div>
+      <div class="center-about" style="display: flex; padding-left: 12%">
+        <div class="about" style="margin-right: 40px">CONTACT</div>
+        <div class="about" style="margin-right: 20px">연락처 010 1234 0000</div>
+        <div class="about" style="margin-right: 20px">이메일 abcd@abcd.com</div>
+        <div class="about">인스타그램 @abcdefg</div>
+      </div>
+      <div
+        class="right-about"
+        style="display: flex; margin-left: auto; padding-right: 5%"
+      >
+        <div class="about" style="margin-right: 40px">SERVICE</div>
+        <div class="about" style="margin-right: 20px">연락처 010 1234 5678</div>
+        <div class="about" style="margin-right: 20px">이메일 abcd@abcd.com</div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1105caefe8133f02fb02b6090b63c644"
+    ></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./map.js"></script>
+    <script src="../search.js"></script>
+    <script src="./test.js"></script>
   </body>
 </html>
