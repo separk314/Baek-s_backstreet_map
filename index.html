@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>백종원 골목식당</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="main/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -19,116 +19,14 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-      }
-      .search img {
-        position: absolute;
-        width: 17px;
-        top: 10px;
-        right: 90px;
-      }
-      input {
-        width: 100%;
-        border-radius: 15px;
-        padding: 10px 12px;
-        padding-left: 55px;
-        font-size: 14px;
-        font-weight: 600;
-        color: gray;
-        border: 1px solid #f6f6f6;
-        background-color: #f6f6f6;
-      }
-      .background {
-        width: 100%;
-      }
-      .header {
-        position: fixed;
-        width: 100%;
-        height: 80px;
-        padding-top: 20px;
-        background-color: white;
-        z-index: 1;
-      }
-      .home {
-        padding-left: 10%;
-        font-size: 25px;
-        font-weight: bold;
-        font-family: sans-serif;
-      }
-      .in-header {
-        width: 100%;
-        display: flex;
-      }
-      .search {
-        position: relative;
-        width: 500px !important;
-        margin-left: auto;
-        padding-right: 80px;
-      }
-      .search-title {
-        position: absolute;
-        width: 50px;
-        font-size: 14px;
-        font-weight: 800;
-        top: 9px;
-        left: 6px;
-      }
-      .login {
-        padding-right: 5%;
-        padding-top: 8px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .login button {
-        border: 0;
-        outline: 0;
-        background-color: white;
-        cursor:pointer;
-      }
-      .regi {
-        padding-right: 10%;
-        padding-top: 8px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .regi button {
-        border: 0;
-        outline: 0;
-        background-color: white;
-        cursor:pointer;
-      }
-      .slides img {
-        margin: 0;
-        width: 100%;
-      }
-      .bt {
-        cursor: pointer;
-      }
-      .scroll {
-        padding-top: 100px;
-        margin-bottom: 200px;
-      }
-      .scroll1 {
-        font-weight: bold;
-      }
-      .zoom {
-        font-weight: 900;
-        font-size: 30px;
-        color: #b70000;
-      }
-    </style>
   </head>
   <body>
     <div class="background">
       <div class="header">
         <div class="in-header">
           <div class="home">
-            <a href="header.html"
-              ><img src="../titlelogo_mainscreen.png" alt=""
+            <a href="index.html"
+              ><img src="assets/images/titlelogo_mainscreen.png" alt=""
             /></a>
           </div>
           <div class="search">
@@ -178,35 +76,35 @@
               <div class="slide_content slide01">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="버거인.png"
+                  src="assets/images/버거인.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide02">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="연돈.png"
+                  src="assets/images/연돈.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide03">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="가야가야.png"
+                  src="assets/images/가야가야.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide04">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="오복함흥냉면.png"
+                  src="assets/images/오복함흥냉면.png"
                   alt=""
                 />
               </div>
               <div class="slide_content slide05">
                 <img
                   style="width: 850px; height: auto; padding-top: 100px"
-                  src="정가네지짐이.png"
+                  src="assets/images/정가네지짐이.png"
                   alt=""
                 />
               </div>
@@ -232,7 +130,7 @@
       <ul class="slide_pagination"></ul>
       <!-- // .slide_pagination -->
     </div>
-    <script src="./slideShow.js"></script>
+    <script src="main/slideShow.js"></script>
 
     <div class="scroll">
       <div class="scroll1">내 근처 골목 식당이 궁금하다면?</div>
@@ -362,8 +260,7 @@
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1105caefe8133f02fb02b6090b63c644"
     ></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./map.js"></script>
-    <script src="../search.js"></script>
-    <script src="./test.js"></script>
+    <script src="main/map.js"></script>
+    <script src="main/search.js"></script>
   </body>
 </html>
