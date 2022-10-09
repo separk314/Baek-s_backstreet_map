@@ -52,14 +52,14 @@ function key_click(e) {
   }
 }
 
-const getRestList2 = async (lat1, lat2, long1, long2) => {
-  console.log("실행");
+// const getRestList2 = async (lat1, lat2, long1, long2) => {
+//   console.log("실행");
 
-  const response = await axios
-    .get(`baeksstreetmap.shop/users/loginId/dkdlel23`)
-    .then((data) => console.log(data))
-    .catch((error) => console.log("error: ", error));
-};
+//   const response = await axios
+//     .get(`baeksstreetmap.shop/stores/11`)
+//     .then((data) => console.log(data))
+//     .catch((error) => console.log("error: ", error));
+// };
 
 function loc_click(e) {
   console.log(e.target.getAttribute("id"));
